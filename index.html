@@ -29,6 +29,7 @@
     margin:0; background:var(--cream); color:var(--ink);
     font-family:'Jost', sans-serif; font-weight:400;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
   h1,h2,h3,.serif{font-family:'Cormorant Garamond', serif;}
   img,svg{max-width:100%;display:block;}
@@ -385,12 +386,15 @@
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:980px){
     .nav-links{display:none;}
-    .hero-inner{grid-template-columns:1fr; text-align:center;}
+    .hero{min-height:680px;}
+    .hero-inner{grid-template-columns:1fr; text-align:center; padding-top:72px; padding-bottom:58px;}
     .hero-inner .eyebrow, .hero-copy{margin-left:auto; margin-right:auto;}
     .hero-ctas{justify-content:center;}
-    .bottle-tagline{position:static; margin-top:30px; text-align:center;}
+    .bottle-stage{display:none;}
     .fragrance-grid{grid-template-columns:repeat(2,1fr);}
     .story-grid{grid-template-columns:1fr;}
+    .story-copy{padding-top:58px; padding-bottom:58px;}
+    .story-features{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:34px 20px;}
     .notes-grid{grid-template-columns:repeat(2,1fr);}
     .foot-top-grid{grid-template-columns:1fr; gap:50px;}
     .ft-col + .ft-col{border-left:none; border-top:1px solid var(--line); padding-top:40px;}
@@ -402,11 +406,42 @@
     .product-modal-card{grid-template-columns:1fr;}
     .product-modal-media,.product-modal-media img{min-height:360px; height:360px;}
     .product-modal-info{padding:38px 30px 32px;}
+    .more-images-grid{grid-template-columns:repeat(2,1fr);}
+    .more-image-card img{height:300px;}
   }
   @media(max-width:600px){
+    .nav-inner{padding:16px 20px;}
+    .brand{font-size:1.05rem; letter-spacing:0.14em;}
+    .nav-right{gap:0;}
+    .nav-icon{display:none;}
+    .shop-now{padding:10px 14px; font-size:0.62rem;}
+    .hero{min-height:620px;}
+    .hero-inner{padding-top:58px; padding-bottom:48px;}
     .hero-title{font-size:2.4rem;}
+    .hero-copy{font-size:0.88rem; max-width:330px;}
+    .hero-ctas{flex-direction:column; align-items:stretch; max-width:280px; margin:0 auto;}
+    .btn-solid,.btn-outline{padding:14px 16px;}
+    .section{padding:62px 0;}
+    .section-head{margin-bottom:34px;}
     .fragrance-grid{grid-template-columns:1fr;}
-    .notes-grid{grid-template-columns:repeat(2,1fr);}
+    .frag-media{aspect-ratio:1/0.95;}
+    .frag-info{padding:0 2px;}
+    .story-slider-slide img{height:300px;}
+    .story-img{min-height:300px;}
+    .story-copy{padding:46px 20px;}
+    .story-copy h3{font-size:1.8rem;}
+    .story-copy p{font-size:0.86rem;}
+    .story-features{grid-template-columns:1fr; gap:22px; padding:30px 20px;}
+    .notes-strip .section-head{padding:0 20px;}
+    .notes-grid{grid-template-columns:1fr 1fr;}
+    .note-tile{padding:14px;}
+    .note-tile .txt .name{font-size:0.66rem;}
+    .note-tile .txt .desc{font-size:0.62rem;}
+    .note-tile .arrow{right:12px; top:12px;}
+    .more-images{padding-top:38px;}
+    .more-images-grid{grid-template-columns:1fr 1fr; gap:10px;}
+    .more-image-card img{height:220px;}
+    .more-image-card .caption{left:8px; right:8px; bottom:8px; padding:8px; font-size:0.58rem;}
     .fb-grid{grid-template-columns:1fr;}
     .ing-grid{grid-template-columns:repeat(2,1fr);}
     .footer-meta{align-items:flex-start; flex-direction:column; gap:16px;}
@@ -415,7 +450,11 @@
     .policy-card{padding:28px 22px;}
     .product-modal{padding:20px 12px;}
     .product-modal-media,.product-modal-media img{min-height:260px; height:260px;}
+    .product-modal-info{padding:34px 22px 26px;}
     .product-modal-info h2{font-size:2rem;}
+    .product-modal-description{font-size:0.84rem;}
+    .policy-card h3{align-items:flex-start; flex-direction:column; gap:14px;}
+    .read-more{width:100%; justify-content:center;}
   }
 </style>
 </head>
