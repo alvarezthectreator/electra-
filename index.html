@@ -564,6 +564,9 @@
   .checkout-form label{display:block; margin:0 0 14px; color:#6b6252; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;}
   .checkout-form input{display:block; width:100%; margin-top:7px; padding:13px 14px; border:1px solid #ded7ca; background:#fff; color:var(--ink); font:0.84rem 'Jost',sans-serif; outline:none;}
   .checkout-form input:focus{border-color:var(--gold-dim);}
+  .terms-check{display:flex; align-items:flex-start; gap:10px; margin:22px 0; color:#6b6252; font-size:0.75rem; line-height:1.5; text-transform:none; letter-spacing:0;}
+  .terms-check input{width:16px; height:16px; flex:none; margin:2px 0 0; accent-color:var(--gold-dim);}
+  .terms-check a{color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
   .checkout-form .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
   .payment-choice{padding:14px; margin:20px 0; border:1px solid var(--gold-dim); font-size:0.8rem;}
   .payment-details{padding:16px; background:#f6f2ea; color:#6b6252; font-size:0.78rem; line-height:1.7;}
@@ -844,6 +847,7 @@
       </div>
       <label>Delivery address<input type="text" name="address" required autocomplete="street-address"></label>
       <div class="payment-choice">Payment method: Bank transfer</div>
+      <label class="terms-check"><input type="checkbox" name="terms" required><span>I agree to the <a href="#shipping-returns" target="_blank">Terms and Services</a>, including the Shipping &amp; Delivery Policy and Return Policy.</span></label>
       <button class="submit-payment" type="submit">Continue to Payment</button>
     </form>
     <aside class="checkout-summary">
