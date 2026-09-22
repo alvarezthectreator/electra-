@@ -159,6 +159,13 @@
     transition:border-color .2s, background .2s, color .2s;
   }
   .frag-card:hover .frag-arrow{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .frag-add{
+    width:32px; height:32px; border-radius:50%; border:1px solid #d8d0bd; flex:none;
+    display:flex; align-items:center; justify-content:center; background:#fff; color:#6b6252;
+    cursor:pointer; font:400 1.15rem 'Jost',sans-serif; line-height:1;
+    transition:border-color .2s, background .2s, color .2s, transform .2s ease;
+  }
+  .frag-add:hover{background:var(--ink); border-color:var(--ink); color:#fff; transform:rotate(90deg) scale(1.08);}
 
   /* ---------- FEATURED 3D DISPLAY ---------- */
   .fragrance-grid{
@@ -699,7 +706,7 @@
             <p class="frag-notes">Woody · Amber · Oud</p>
             <p class="frag-price">$195</p>
           </div>
-          <div class="frag-arrow">&#8594;</div>
+          <button class="frag-add" type="button" aria-label="Add Obsidian to cart">+</button>
         </div>
       </div>
 
@@ -713,7 +720,7 @@
             <p class="frag-notes">Citrus · Jasmine · Musk</p>
             <p class="frag-price">$185</p>
           </div>
-          <div class="frag-arrow">&#8594;</div>
+          <button class="frag-add" type="button" aria-label="Add Lumière to cart">+</button>
         </div>
       </div>
 
@@ -727,7 +734,7 @@
             <p class="frag-notes">Rose · Patchouli · Amber</p>
             <p class="frag-price">$195</p>
           </div>
-          <div class="frag-arrow">&#8594;</div>
+          <button class="frag-add" type="button" aria-label="Add Noir Rose to cart">+</button>
         </div>
       </div>
 
@@ -741,7 +748,7 @@
             <p class="frag-notes">Vanilla · Musk · Sandalwood</p>
             <p class="frag-price">$185</p>
           </div>
-          <div class="frag-arrow">&#8594;</div>
+          <button class="frag-add" type="button" aria-label="Add Blanche to cart">+</button>
         </div>
       </div>
 
@@ -1209,6 +1216,18 @@
 
   document.querySelectorAll('.frag-card[data-product]').forEach((card) => {
     card.addEventListener('click', () => openProduct(card.dataset.product));
+    card.querySelector('.frag-add').addEventListener('click', (event) => {
+      event.stopPropagation();
+      const product = products[card.dataset.product];
+      if (product) {
+        addToCart({
+          id: card.dataset.product,
+          name: product.name,
+          price: Number(product.price.replace('$', '')),
+          image: product.image
+        }, 1);
+      }
+    });
     card.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
