@@ -160,6 +160,41 @@
   }
   .frag-card:hover .frag-arrow{background:var(--ink); border-color:var(--ink); color:#fff;}
 
+  /* ---------- FEATURED 3D DISPLAY ---------- */
+  .fragrance-grid{
+    perspective:1400px;
+    perspective-origin:center center;
+  }
+  .frag-card{
+    position:relative;
+    transform-style:preserve-3d;
+    will-change:transform;
+    opacity:0;
+    transform:translateY(34px) rotateX(12deg) rotateY(-5deg);
+    transition:transform .65s cubic-bezier(.2,.8,.25,1), box-shadow .4s ease, opacity .6s ease;
+  }
+  .fragrance-grid.is-visible .frag-card{opacity:1; transform:translateY(0) rotateX(0) rotateY(0);}
+  .fragrance-grid.is-visible .frag-card:nth-child(2){transition-delay:.1s;}
+  .fragrance-grid.is-visible .frag-card:nth-child(3){transition-delay:.2s;}
+  .fragrance-grid.is-visible .frag-card:nth-child(4){transition-delay:.3s;}
+  .frag-card::after{
+    content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
+    background:linear-gradient(115deg, transparent 24%, rgba(255,255,255,0.38) 46%, transparent 65%);
+    transform:translateX(-130%); transition:transform .75s ease;
+  }
+  .frag-card:hover{
+    transform:translateY(-14px) rotateX(4deg) rotateY(-5deg) scale(1.025) !important;
+    box-shadow:18px 26px 38px rgba(21,18,16,0.2);
+  }
+  .frag-card:hover::after{transform:translateX(130%);}
+  .frag-card .frag-media{transform:translateZ(12px);}
+  .frag-card .frag-info{position:relative; z-index:5; transform:translateZ(20px);}
+  @media(prefers-reduced-motion:reduce){
+    .frag-card,.fragrance-grid.is-visible .frag-card{opacity:1; transform:none; transition:none;}
+    .frag-card:hover{transform:none !important;}
+    .frag-card::after{display:none;}
+  }
+
   /* ---------- OUR STORY ---------- */
   .story{background:#0d0c0b; padding:0 0 90px; color:#f4efe4;}
   .story-grid{
@@ -1304,6 +1339,18 @@
     notesObserver.observe(notesGrid);
   } else if (notesGrid) {
     notesGrid.classList.add('is-visible');
+  }
+
+  const fragranceGrid = document.querySelector('.fragrance-grid');
+  if (fragranceGrid && 'IntersectionObserver' in window) {
+    const fragranceObserver = new IntersectionObserver((entries, observer) => {
+      if (!entries[0].isIntersecting) return;
+      fragranceGrid.classList.add('is-visible');
+      observer.disconnect();
+    }, {threshold: 0.18});
+    fragranceObserver.observe(fragranceGrid);
+  } else if (fragranceGrid) {
+    fragranceGrid.classList.add('is-visible');
   }
 
   document.querySelectorAll('.policy-card').forEach((card) => {
