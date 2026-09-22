@@ -252,12 +252,12 @@
   .note-tile:nth-child(4){transform:translateY(-120px) rotate(1.5deg) scale(0.98);}
   .note-tile:nth-child(5){transform:translateY(-120px) rotate(-1.5deg) scale(0.98);}
   .notes-grid.is-visible .note-tile{
-    animation:noteBrickDrop .72s cubic-bezier(.2,.92,.25,1.16) forwards;
+    animation:noteBrickDrop 1.35s cubic-bezier(.2,.92,.25,1.16) forwards;
   }
-  .notes-grid.is-visible .note-tile:nth-child(2){animation-delay:.1s;}
-  .notes-grid.is-visible .note-tile:nth-child(3){animation-delay:.2s;}
-  .notes-grid.is-visible .note-tile:nth-child(4){animation-delay:.3s;}
-  .notes-grid.is-visible .note-tile:nth-child(5){animation-delay:.4s;}
+  .notes-grid.is-visible .note-tile:nth-child(2){animation-delay:.28s;}
+  .notes-grid.is-visible .note-tile:nth-child(3){animation-delay:.56s;}
+  .notes-grid.is-visible .note-tile:nth-child(4){animation-delay:.84s;}
+  .notes-grid.is-visible .note-tile:nth-child(5){animation-delay:1.12s;}
   @keyframes noteBrickDrop{
     0%{opacity:0; transform:translateY(-120px) rotate(-2deg) scale(0.98);}
     62%{opacity:1; transform:translateY(10px) rotate(0.8deg) scale(1.01);}
@@ -407,6 +407,36 @@
   .contact-line{display:flex; flex-wrap:wrap; justify-content:center; gap:12px 28px; margin-top:28px;}
   .contact-line a{color:var(--ink); font-size:0.8rem; letter-spacing:0.1em; font-weight:600;}
   .contact-line a:hover{color:var(--gold-dim);}
+
+  /* ---------- HERO ENTRANCE ---------- */
+  .hero-inner > div:first-child > *{
+    opacity:0;
+    animation:heroFloatIn 1.3s cubic-bezier(.2,.78,.25,1) forwards;
+  }
+  .hero-inner > div:first-child .eyebrow{animation-delay:.2s;}
+  .hero-inner > div:first-child .hero-title{animation-delay:.45s;}
+  .hero-inner > div:first-child .hero-rule{animation-delay:.7s;}
+  .hero-inner > div:first-child .hero-copy{animation-delay:.9s;}
+  .hero-inner > div:first-child .hero-ctas{animation-delay:1.15s;}
+  @keyframes heroFloatIn{
+    0%{opacity:0; transform:translateY(28px);}
+    65%{opacity:1; transform:translateY(-5px);}
+    100%{opacity:1; transform:translateY(0);}
+  }
+  .hero-ctas .btn-solid,.hero-ctas .btn-outline{
+    animation:heroButtonFloat 1.15s cubic-bezier(.2,.78,.25,1) both;
+  }
+  .hero-ctas .btn-solid{animation-delay:1.35s;}
+  .hero-ctas .btn-outline{animation-delay:1.6s;}
+  @keyframes heroButtonFloat{
+    0%{opacity:0; transform:translateY(18px);}
+    70%{opacity:1; transform:translateY(-3px);}
+    100%{opacity:1; transform:translateY(0);}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-inner > div:first-child > *,
+    .hero-ctas .btn-solid,.hero-ctas .btn-outline{opacity:1; animation:none;}
+  }
 
   /* ---------- PRODUCT DETAIL ---------- */
   .product-modal{
