@@ -326,6 +326,17 @@
   .policy-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
   .policy-card{background:#fff; padding:34px 36px; border-top:2px solid var(--gold-dim);}
   .policy-card h3{margin:0 0 24px; font-size:1.55rem; font-weight:500; color:var(--ink);}
+  .policy-card h3{display:flex; align-items:center; justify-content:space-between; gap:18px;}
+  .read-more{
+    display:inline-flex; align-items:center; gap:8px; border:1px solid var(--gold-dim);
+    background:transparent; color:var(--ink); padding:11px 16px; cursor:pointer;
+    font:600 0.68rem 'Jost',sans-serif; letter-spacing:0.12em; text-transform:uppercase;
+    transition:background .2s ease, color .2s ease;
+  }
+  .read-more::after{content:"+"; font-size:1rem; line-height:0.7; color:var(--gold-dim);}
+  .read-more[aria-expanded="true"]::after{content:"-";}
+  .read-more:hover,.read-more[aria-expanded="true"]{background:var(--ink); color:var(--white);}
+  .policy-card.is-collapsed h3{margin-bottom:0;}
   .policy-card h4{margin:22px 0 7px; font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; color:var(--ink);}
   .policy-card h4:first-of-type{margin-top:0;}
   .policy-card p,.policy-card li{color:#6b6252; font-size:0.84rem; line-height:1.7;}
@@ -599,6 +610,7 @@
     <div class="policy-grid">
       <article class="policy-card" id="shipping-policy">
         <h3>Shipping &amp; Delivery Policy</h3>
+        <button class="read-more" type="button" aria-expanded="false">Read More</button>
         <h4>1. Order Processing Time</h4>
         <ul>
           <li>All orders are meticulously processed within 1 to 3 business days, excluding weekends and public holidays, after receiving your order confirmation email.</li>
@@ -625,6 +637,7 @@
       </article>
       <article class="policy-card" id="return-policy">
         <h3>Return Policy</h3>
+        <button class="read-more" type="button" aria-expanded="false">Read More</button>
         <p>At Elys Beauty Empire, we take pride in the quality of our luxury items. We want you to feel completely confident in your purchase. If you are not entirely satisfied, we are here to help.</p>
         <h4>1. Eligibility for Returns</h4>
         <ul>
@@ -734,6 +747,24 @@
 
   storyDots.forEach((dot, index) => {
     dot.addEventListener('click', () => updateStorySlider(index));
+  });
+
+  document.querySelectorAll('.policy-card').forEach((card) => {
+    const toggle = card.querySelector('.read-more');
+    const details = Array.from(card.children).filter((child) => child.tagName !== 'H3' && child !== toggle);
+    details.forEach((detail) => {
+      detail.hidden = true;
+    });
+    card.classList.add('is-collapsed');
+    toggle.addEventListener('click', () => {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isExpanded));
+      toggle.firstChild.textContent = isExpanded ? 'Read More' : 'Read Less';
+      details.forEach((detail) => {
+        detail.hidden = isExpanded;
+      });
+      card.classList.toggle('is-collapsed', isExpanded);
+    });
   });
 
   setInterval(() => {
