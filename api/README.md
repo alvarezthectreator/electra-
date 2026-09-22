@@ -8,6 +8,6 @@ The storefront uses these same-origin endpoints:
 - `GET /api/admin/orders.php` lists orders.
 - `PATCH /api/admin/orders.php` updates an order status with `{ "order_code": "...", "status": "paid" }`.
 
-MAMP defaults are configured in `config.php`: MySQL host `127.0.0.1`, database `elys_beauty`, user `root`, and an empty password. Set `ELYS_DB_HOST`, `ELYS_DB_NAME`, `ELYS_DB_USER`, `ELYS_DB_PASS`, and `ELYS_ADMIN_TOKEN` in the server environment for production. The database and tables are created automatically on the first API request.
+MAMP defaults are configured in `config.php`: MySQL host `127.0.0.1`, port `8889`, database `elys_beauty`, user `root`, and password `root`. Set `ELYS_DB_HOST`, `ELYS_DB_PORT`, `ELYS_DB_NAME`, `ELYS_DB_USER`, `ELYS_DB_PASS`, and `ELYS_ADMIN_TOKEN` in the server environment for production. The database and tables are created automatically on the first API request.
 
 Before accepting real payments, replace the placeholder bank account row in `schema.sql` or insert it into `bank_settings`.

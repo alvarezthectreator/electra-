@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 const DB_HOST = '127.0.0.1';
+const DB_PORT = '8889';
 const DB_NAME = 'elys_beauty';
 const DB_USER = 'root';
-const DB_PASS = '';
+const DB_PASS = 'root';
 const ADMIN_TOKEN = '';
 
 function envValue(string $name, string $fallback): string
@@ -22,15 +23,16 @@ function db(): PDO
     }
 
     $host = envValue('ELYS_DB_HOST', DB_HOST);
+    $port = envValue('ELYS_DB_PORT', DB_PORT);
     $name = envValue('ELYS_DB_NAME', DB_NAME);
     $user = envValue('ELYS_DB_USER', DB_USER);
     $pass = envValue('ELYS_DB_PASS', DB_PASS);
-    $server = new PDO("mysql:host={$host};charset=utf8mb4", $user, $pass, [
+    $server = new PDO("mysql:host={$host};port={$port};charset=utf8mb4", $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
     $server->exec("CREATE DATABASE IF NOT EXISTS `{$name}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-    $pdo = new PDO("mysql:host={$host};dbname={$name};charset=utf8mb4", $user, $pass, [
+    $pdo = new PDO("mysql:host={$host};port={$port};dbname={$name};charset=utf8mb4", $user, $pass, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
