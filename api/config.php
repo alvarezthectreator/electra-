@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 const DB_HOST = '127.0.0.1';
 const DB_PORT = '8889';
-const DB_NAME = 'elys_beauty';
+const DB_NAME = 'angel';
 const DB_USER = 'root';
 const DB_PASS = 'root';
 const ADMIN_TOKEN = '';
