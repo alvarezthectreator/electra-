@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aura Noir — Scent is your silent signature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#151210;
+    --black:#0d0c0b;
+    --black-soft:#17140f;
+    --cream:#f6f1e8;
+    --cream-2:#efe8db;
+    --gold:#c9a35f;
+    --gold-light:#e3c88a;
+    --gold-dim:#a9884f;
+    --line:rgba(201,163,95,0.35);
+    --white:#fbf8f2;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing:border-box;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top: env(safe-area-inset-top, 0px);}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:'Jost', sans-serif; font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond', serif;}
+  img,svg{max-width:100%;display:block;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;margin:0;padding:0;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    background:var(--black); position:sticky; top:0; z-index:50;
+    padding-top: env(safe-area-inset-top, 0px);
+    border-bottom:1px solid rgba(201,163,95,0.18);
+  }
+  .nav-inner{
+    max-width:1240px;margin:0 auto;padding:20px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{
+    font-family:'Cormorant Garamond',serif; color:var(--gold-light);
+    font-size:1.45rem; letter-spacing:0.22em; font-weight:600; white-space:nowrap;
+  }
+  .nav-links{display:flex;gap:34px;align-items:center;flex:1;justify-content:center;}
+  .nav-links a{
+    color:#e9e2d3; font-size:0.72rem; letter-spacing:0.16em; font-weight:500;
+    text-transform:uppercase; position:relative; padding-bottom:6px; transition:color .25s ease;
+  }
+  .nav-links a:hover{color:var(--gold-light);}
+  .nav-links a.active{color:var(--gold-light);}
+  .nav-links a.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold-light);
+  }
+  .nav-right{display:flex;align-items:center;gap:22px;}
+  .nav-icon{width:17px;height:17px;color:#e9e2d3;cursor:pointer;transition:color .2s;}
+  .nav-icon:hover{color:var(--gold-light);}
+  .shop-now{
+    border:1px solid var(--gold-light); background:linear-gradient(180deg,#e6cd93,#c9a35f);
+    color:#1b1509; font-size:0.7rem; letter-spacing:0.14em; font-weight:600;
+    padding:11px 22px; text-transform:uppercase; white-space:nowrap; cursor:pointer;
+    transition:filter .2s ease;
+  }
+  .shop-now:hover{filter:brightness(1.08);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; background:transparent; color:var(--white); overflow:hidden;
+    min-height:760px; display:flex; align-items:center;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image: url('Perfume_bottle_on_stone_pedestal_2K_20260922115134.jpeg');
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    filter:saturate(1) contrast(1) brightness(1);
+    transform:scale(1.02);
+  }
+  .hero-inner{
+    position:relative; z-index:2; max-width:1240px; margin:0 auto; padding:90px 40px 70px;
+    display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center; width:100%;
+  }
+  .eyebrow{
+    font-size:0.72rem; letter-spacing:0.28em; color:var(--gold-light); text-transform:uppercase;
+    margin-bottom:22px; font-weight:500;
+  }
+  .hero-title{
+    font-size:3.6rem; line-height:1.08; font-weight:500; margin:0 0 26px;
+    color:#f4efe4;
+  }
+  .hero-title em{
+    font-style:italic; color:var(--gold-light); font-weight:500;
+  }
+  .hero-rule{width:56px;height:1px;background:var(--gold);margin:0 0 22px;}
+  .hero-copy{
+    font-size:0.98rem; line-height:1.7; color:#cfc7b6; max-width:380px; margin:0 0 34px; font-weight:300;
+  }
+  .hero-ctas{display:flex; gap:14px;}
+  .btn-solid{
+    background:linear-gradient(180deg,#e6cd93,#c9a35f); color:#1b1509; border:none;
+    padding:15px 26px; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+    font-weight:600; cursor:pointer;
+  }
+  .btn-outline{
+    background:transparent; color:#f4efe4; border:1px solid rgba(244,239,228,0.4);
+    padding:15px 26px; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+    font-weight:500; cursor:pointer; transition:border-color .2s, color .2s;
+  }
+  .btn-outline:hover{border-color:var(--gold-light); color:var(--gold-light);}
+
+  .bottle-stage{position:relative; display:flex; align-items:center; justify-content:center; min-height:480px;}
+  .bottle-tagline{
+    position:absolute; right:0; top:8%; text-align:left; font-size:0.68rem;
+    letter-spacing:0.18em; color:#d8cdb0; line-height:2; text-transform:uppercase; font-weight:500;
+  }
+  .bottle-tagline .mono{
+    margin-top:14px; font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--gold-light);
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- FEATURED ---------- */
+  .section{padding:88px 0;}
+  .section-head{text-align:center; margin-bottom:52px;}
+  .section-head h2{
+    font-size:0.85rem; letter-spacing:0.26em; text-transform:uppercase; font-weight:500;
+    color:var(--ink); font-family:'Jost',sans-serif; margin:0 0 14px;
+  }
+  .section-head .rule{width:44px;height:1px;background:var(--gold-dim); margin:0 auto;}
+
+  .fragrance-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:26px;
+  }
+  .frag-card{background:#fff;}
+  .frag-media{
+    aspect-ratio:1/1.05; position:relative; overflow:hidden; margin-bottom:18px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .frag-info{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+  .frag-name{font-size:0.82rem; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; margin:0 0 5px;}
+  .frag-notes{font-size:0.76rem; color:#8a8172; margin:0 0 8px; font-weight:300;}
+  .frag-price{font-size:0.86rem; font-weight:500; color:var(--ink);}
+  .frag-arrow{
+    width:30px;height:30px;border-radius:50%; border:1px solid #d8d0bd; flex:none;
+    display:flex;align-items:center;justify-content:center; font-size:0.85rem; color:#6b6252;
+    transition:border-color .2s, background .2s, color .2s;
+  }
+  .frag-card:hover .frag-arrow{background:var(--ink); border-color:var(--ink); color:#fff;}
+
+  /* ---------- OUR STORY ---------- */
+  .story{background:#0d0c0b; padding:0 0 90px; color:#f4efe4;}
+  .story-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr 0.7fr; gap:0; align-items:stretch;
+  }
+  .story-img{
+    position:relative; overflow:hidden; min-height:420px; background:#0f0d0b;
+  }
+  .story-slider-panel{
+    position:relative; height:100%; width:100%; overflow:hidden;
+  }
+  .story-slider-track{
+    display:flex; height:100%; transition:transform .8s ease-in-out;
+  }
+  .story-slider-slide{
+    min-width:100%; height:100%;
+  }
+  .story-slider-slide img{
+    display:block; width:100%; height:420px; object-fit:cover; object-position:center;
+  }
+  .story-slider-dots{
+    position:absolute; left:24px; bottom:18px; display:flex; gap:8px; z-index:3;
+  }
+  .story-slider-dots button{
+    width:9px; height:9px; border-radius:50%; border:none; background:rgba(255,255,255,0.46); padding:0; cursor:pointer;
+  }
+  .story-slider-dots button.active{background:var(--gold-light);}
+  .story-label{
+    position:absolute; left:24px; bottom:24px; z-index:2; color:#f4efe4;
+    font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500;
+  }
+  .story-label .rule{width:34px;height:1px;background:var(--gold-light); margin-top:10px;}
+  .story-copy{padding:50px 48px; display:flex; flex-direction:column; justify-content:center;}
+  .story-copy h3{font-size:2.1rem; line-height:1.2; font-weight:500; margin:0 0 20px;}
+  .story-copy p{font-size:0.94rem; line-height:1.75; color:#6b6252; font-weight:300; margin:0 0 30px; max-width:440px;}
+  .btn-line{
+    align-self:flex-start; border:1px solid var(--ink); background:transparent; color:var(--ink);
+    padding:14px 26px; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:500;
+    cursor:pointer; transition:background .2s, color .2s;
+  }
+  .btn-line:hover{background:var(--ink); color:#fff;}
+
+  .story-features{background:var(--cream-2); padding:44px 34px; display:flex; flex-direction:column; gap:30px; justify-content:center;}
+  .feat-item{display:flex; gap:16px; align-items:flex-start;}
+  .feat-icon{
+    width:38px;height:38px;border-radius:50%; border:1px solid var(--gold-dim); flex:none;
+    display:flex; align-items:center; justify-content:center; color:var(--gold-dim);
+  }
+  .feat-item h4{margin:0 0 4px; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;}
+  .feat-item p{margin:0; font-size:0.8rem; color:#8a8172; font-weight:300; line-height:1.5;}
+
+  /* ---------- STORY SLIDER ---------- */
+  .story-slider-wrap{
+    max-width:1240px; margin:0 auto; padding:0 40px 20px;
+  }
+  .story-slider{
+    position:relative; overflow:hidden; border-radius:18px; background:#13110f; box-shadow:0 20px 40px rgba(0,0,0,0.28); border:1px solid rgba(201,163,95,0.2);
+  }
+  .story-slide-track{
+    display:flex; transition:transform .8s ease-in-out;
+  }
+  .story-slide{
+    min-width:100%; position:relative;
+  }
+  .story-slide img{
+    display:block; width:100%; height:420px; object-fit:cover; filter:saturate(0.9) contrast(1.08);
+  }
+  .story-slider-dots{
+    display:flex; justify-content:center; gap:10px; margin-top:16px;
+  }
+  .story-slider-dots button{
+    width:12px; height:12px; border-radius:50%; border:none; background:rgba(255,255,255,0.35); cursor:pointer; padding:0;
+  }
+  .story-slider-dots button.active{background:var(--gold-light);}
+
+  /* ---------- NOTES STRIP ---------- */
+  .notes-strip{padding:0 0 0;}
+  .notes-grid{display:grid; grid-template-columns:repeat(5,1fr);}
+  .note-tile{
+    position:relative; aspect-ratio:1/0.78; overflow:hidden; color:#fff;
+    background-size:cover; background-position:center;
+    display:flex; align-items:flex-end; padding:20px;
+  }
+  .note-tile::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,9,8,0.05), rgba(10,9,8,0.75));}
+  .note-tile .txt{position:relative;z-index:2;}
+  .note-tile .txt .name{font-size:0.78rem; letter-spacing:0.14em; font-weight:600; text-transform:uppercase; margin-bottom:3px;}
+  .note-tile .txt .desc{font-size:0.72rem; color:#d8cdb0; font-weight:300;}
+  .note-tile .arrow{
+    position:absolute; z-index:2; right:16px; top:16px; font-size:0.85rem; color:#f4efe4;
+  }
+
+  /* ---------- MORE IMAGES ---------- */
+  .more-images{padding:48px 0 0; background:var(--cream);}
+  .more-images-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+  }
+  .more-image-card{
+    position:relative; overflow:hidden; border:1px solid rgba(14,12,10,0.08); background:#f2e8d8;
+    box-shadow:0 18px 32px rgba(14,12,10,0.05);
+  }
+  .more-image-card img{
+    display:block; width:100%; height:360px; object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .more-image-card:hover img{transform:scale(1.04);}
+  .more-image-card .caption{
+    position:absolute; left:16px; right:16px; bottom:16px; z-index:2;
+    padding:10px 12px; background:rgba(10,9,8,0.38); backdrop-filter:blur(4px);
+    color:#f8f3e8; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase;
+  }
+
+  /* ---------- FOOTER TOP STRIP ---------- */
+  .foot-top{background:var(--cream-2); padding:70px 0;}
+  .foot-top-grid{display:grid; grid-template-columns:1.1fr 0.9fr 1fr; gap:20px;}
+  .ft-col{padding:0 30px;}
+  .ft-col + .ft-col{border-left:1px solid var(--line);}
+  .ft-title{
+    font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:600;
+    text-align:center; margin:0 0 30px; color:var(--ink);
+  }
+  .ing-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; text-align:center;}
+  .ing-item{display:flex; flex-direction:column; align-items:center; gap:10px;}
+  .ing-icon{width:34px;height:34px; color:var(--gold-dim);}
+  .ing-item span{font-size:0.66rem; letter-spacing:0.05em; text-transform:uppercase; color:#6b6252; font-weight:500;}
+
+  .brand-mid{text-align:center; display:flex; flex-direction:column; align-items:center; gap:16px;}
+  .brand-mid .mono-an{
+    width:48px;height:48px; border:1px solid var(--gold-dim); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif;
+    font-size:1.2rem; color:var(--gold-dim); font-weight:600;
+  }
+  .brand-mid p{margin:0; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); font-weight:600; line-height:1.8;}
+
+  .trust-stars{color:var(--gold); text-align:center; font-size:0.95rem; letter-spacing:3px; margin-bottom:16px;}
+  .quote{
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.08rem; line-height:1.6;
+    text-align:center; color:var(--ink); margin:0 0 14px;
+  }
+  .quote-by{text-align:center; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:#8a8172;}
+
+  /* ---------- FOOTER BOTTOM ---------- */
+  .foot-bottom{background:var(--black); padding:26px 0;}
+  .fb-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .fb-item{display:flex; align-items:center; gap:12px; color:#d8cdb0;}
+  .fb-item svg{width:22px;height:22px; color:var(--gold-light); flex:none;}
+  .fb-item .t1{font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:600; color:#f4efe4;}
+  .fb-item .t2{font-size:0.7rem; color:#a89f8c; font-weight:300;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:980px){
+    .nav-links{display:none;}
+    .hero-inner{grid-template-columns:1fr; text-align:center;}
+    .hero-inner .eyebrow, .hero-copy{margin-left:auto; margin-right:auto;}
+    .hero-ctas{justify-content:center;}
+    .bottle-tagline{position:static; margin-top:30px; text-align:center;}
+    .fragrance-grid{grid-template-columns:repeat(2,1fr);}
+    .story-grid{grid-template-columns:1fr;}
+    .notes-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-top-grid{grid-template-columns:1fr; gap:50px;}
+    .ft-col + .ft-col{border-left:none; border-top:1px solid var(--line); padding-top:40px;}
+    .fb-grid{grid-template-columns:1fr 1fr; gap:24px;}
+    .wrap{padding:0 20px;}
+    .hero-inner, .story-copy{padding-left:20px;padding-right:20px;}
+  }
+  @media(max-width:600px){
+    .hero-title{font-size:2.4rem;}
+    .fragrance-grid{grid-template-columns:1fr;}
+    .notes-grid{grid-template-columns:repeat(2,1fr);}
+    .fb-grid{grid-template-columns:1fr;}
+    .ing-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">AURA NOIR</div>
+    <nav class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#story">Our Story</a>
+      <a href="#notes">Ingredients</a>
+      <a href="#">Journal</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+      <button class="shop-now">Shop Now</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">The Art of Attraction</div>
+      <h1 class="hero-title">Scent is<br>your silent<br><em>signature.</em></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-copy">Timeless fragrances crafted with rare ingredients for those who leave an unforgettable impression.</p>
+      <div class="hero-ctas">
+        <button class="btn-solid">Shop Signature Scent</button>
+        <button class="btn-outline">Explore Collection</button>
+      </div>
+    </div>
+    <div class="bottle-stage" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ============ FEATURED FRAGRANCES ============ -->
+<section class="section" id="collection">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Featured Fragrances</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="fragrance-grid">
+
+      <div class="frag-card">
+        <div class="frag-media" style="background:linear-gradient(160deg,#1c1a17,#050504);">
+          <img src="imgi_103_Post-8.png" alt="Obsidian perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        </div>
+        <div class="frag-info">
+          <div>
+            <p class="frag-name">Obsidian</p>
+            <p class="frag-notes">Woody · Amber · Oud</p>
+            <p class="frag-price">$195</p>
+          </div>
+          <div class="frag-arrow">&#8594;</div>
+        </div>
+      </div>
+
+      <div class="frag-card">
+        <div class="frag-media" style="background:linear-gradient(160deg,#f4ecd9,#e7dcc0);">
+          <img src="imgi_106_Post-2.png" alt="Lumière perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        </div>
+        <div class="frag-info">
+          <div>
+            <p class="frag-name">Lumière</p>
+            <p class="frag-notes">Citrus · Jasmine · Musk</p>
+            <p class="frag-price">$185</p>
+          </div>
+          <div class="frag-arrow">&#8594;</div>
+        </div>
+      </div>
+
+      <div class="frag-card">
+        <div class="frag-media" style="background:linear-gradient(160deg,#d8c9a8,#b89a63);">
+          <img src="imgi_107_Post-9-1.png" alt="Noir Rose perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        </div>
+        <div class="frag-info">
+          <div>
+            <p class="frag-name">Noir Rose</p>
+            <p class="frag-notes">Rose · Patchouli · Amber</p>
+            <p class="frag-price">$195</p>
+          </div>
+          <div class="frag-arrow">&#8594;</div>
+        </div>
+      </div>
+
+      <div class="frag-card">
+        <div class="frag-media" style="background:linear-gradient(160deg,#efe9dc,#d9d0bc);">
+          <img src="imgi_108_Post-16.png" alt="Blanche perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        </div>
+        <div class="frag-info">
+          <div>
+            <p class="frag-name">Blanche</p>
+            <p class="frag-notes">Vanilla · Musk · Sandalwood</p>
+            <p class="frag-price">$185</p>
+          </div>
+          <div class="frag-arrow">&#8594;</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUR STORY ============ -->
+<section class="story" id="story">
+  <div class="story-grid">
+    <div class="story-img">
+      <div class="story-slider-panel">
+        <div class="story-slider-track" id="storySliderTrack">
+          <div class="story-slider-slide"><img src="imgi_229_WhatsApp-Image-2026-04-04-at-9.07.40-PM-2-1.jpg" alt="Story image 1" /></div>
+          <div class="story-slider-slide"><img src="imgi_103_Post-8.png" alt="Story image 2" /></div>
+          <div class="story-slider-slide"><img src="imgi_106_Post-2.png" alt="Story image 3" /></div>
+        </div>
+        <div class="story-slider-dots" aria-label="Story image navigation">
+          <button class="active" type="button" aria-label="Show story image 1"></button>
+          <button type="button" aria-label="Show story image 2"></button>
+          <button type="button" aria-label="Show story image 3"></button>
+        </div>
+      </div>
+      <div class="story-label">Our Story<div class="rule"></div></div>
+    </div>
+    <div class="story-copy">
+      <h3>Crafted with passion.<br>Rooted in timeless luxury.</h3>
+      <p>AURA NOIR is more than a fragrance—it is a statement of elegance, individuality, and refinement. Each scent is a masterpiece, blending rare ingredients with unwavering dedication to perfection.</p>
+      <button class="btn-line">Discover Our Story</button>
+    </div>
+    <div class="story-features">
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <div>
+          <h4>Finest Ingredients</h4>
+          <p>Sourced from around the world.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21l2-7.8L2 9h7z"/></svg></div>
+        <div>
+          <h4>Expertly Crafted</h4>
+          <p>Blended by master perfumers.</p>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div>
+        <div>
+          <h4>Timeless Elegance</h4>
+          <p>Designed to leave a lasting impression.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE NOTES ============ -->
+<section class="notes-strip" id="notes">
+  <div class="section-head" style="margin-bottom:36px;">
+    <h2>The Notes</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="notes-grid">
+    <div class="note-tile" style="background-image:url('imgi_17_A_e25106a4-f8fd-4402-97aa-6ac1c7414360.jpg');">
+      <div class="txt"><div class="name">Amber</div><div class="desc">Warm &amp; Resinous</div></div>
+      <div class="arrow">&#8594;</div>
+    </div>
+    <div class="note-tile" style="background-image:url('imgi_18_K.jpg');">
+      <div class="txt"><div class="name">Rose</div><div class="desc">Floral &amp; Romantic</div></div>
+      <div class="arrow">&#8594;</div>
+    </div>
+    <div class="note-tile" style="background-image:url('imgi_223_Khamrah-2_34a8222e-a770-40b3-9268-b5ee164ad013.png');">
+      <div class="txt"><div class="name">Vanilla</div><div class="desc">Smooth &amp; Comforting</div></div>
+      <div class="arrow">&#8594;</div>
+    </div>
+    <div class="note-tile" style="background-image:url('imgi_31_COVER_MAIN_UP_4-5.png');">
+      <div class="txt"><div class="name">Oud</div><div class="desc">Rich &amp; Mysterious</div></div>
+      <div class="arrow">&#8594;</div>
+    </div>
+    <div class="note-tile" style="background-image:url('imgi_351_JPEG_image-41C4-8874-82-0.png');">
+      <div class="txt"><div class="name">Musk</div><div class="desc">Sensual &amp; Soft</div></div>
+      <div class="arrow">&#8594;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORE IMAGES ============ -->
+<section class="more-images">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:30px;">
+      <h2>More From The Collection</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="more-images-grid">
+      <div class="more-image-card">
+        <img src="imgi_17_A_e25106a4-f8fd-4402-97aa-6ac1c7414360.jpg" alt="Luxury fragrance campaign image" />
+        <div class="caption">Signature</div>
+      </div>
+      <div class="more-image-card">
+        <img src="imgi_18_K.jpg" alt="Amber perfume close up" />
+        <div class="caption">Amber</div>
+      </div>
+      <div class="more-image-card">
+        <img src="imgi_223_Khamrah-2_34a8222e-a770-40b3-9268-b5ee164ad013.png" alt="Perfume bottle campaign art" />
+        <div class="caption">Noir</div>
+      </div>
+      <div class="more-image-card">
+        <img src="imgi_31_COVER_MAIN_UP_4-5.png" alt="Hero fragrance detail shot" />
+        <div class="caption">Luxe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER TOP: INGREDIENTS / BRAND / TRUST ============ -->
+<section class="foot-top">
+  <div class="wrap foot-top-grid">
+    <div class="ft-col">
+      <p class="ft-title">Precious Ingredients</p>
+      <div class="ing-grid">
+        <div class="ing-item">
+          <svg class="ing-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2C9 6 6 9 6 13a6 6 0 0012 0c0-4-3-7-6-11z"/></svg>
+          <span>Natural Extracts</span>
+        </div>
+        <div class="ing-item">
+          <svg class="ing-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
+          <span>Rare Resins</span>
+        </div>
+        <div class="ing-item">
+          <svg class="ing-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5"/></svg>
+          <span>Sustainable Sourcing</span>
+        </div>
+        <div class="ing-item">
+          <svg class="ing-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>
+          <span>Cruelty Free</span>
+        </div>
+      </div>
+    </div>
+    <div class="ft-col brand-mid">
+      <div class="mono-an">AN</div>
+      <p>Luxury You Can Feel.<br>Quality You Can Trust.</p>
+    </div>
+    <div class="ft-col">
+      <p class="ft-title">Trusted By Connoisseurs</p>
+      <div class="trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="quote">"Aura Noir captures the essence of luxury. Every scent is pure sophistication."</p>
+      <p class="quote-by">— James L., New York</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER BOTTOM ============ -->
+<footer class="foot-bottom">
+  <div class="wrap fb-grid">
+    <div class="fb-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="7" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.8"/><circle cx="18.5" cy="19" r="1.8"/></svg>
+      <div><div class="t1">Complimentary Shipping</div><div class="t2">On all orders over $150</div></div>
+    </div>
+    <div class="fb-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 12v8a1 1 0 01-1 1H5a1 1 0 01-1-1v-8"/><rect x="2" y="7" width="20" height="5"/><path d="M12 7v14M12 7c-2 0-4-1.5-4-3.5S9 1 12 3c0-2 2-3.5 4-2S16 5 14 7"/></svg>
+      <div><div class="t1">Exclusive Samples</div><div class="t2">With every purchase</div></div>
+    </div>
+    <div class="fb-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 8l9-5 9 5"/><path d="M12 12v9"/></svg>
+      <div><div class="t1">Luxury Gift Packaging</div><div class="t2">For a memorable experience</div></div>
+    </div>
+    <div class="fb-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+      <div><div class="t1">Secure Checkout</div><div class="t2">Shop with confidence</div></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const storyTrack = document.getElementById('storySliderTrack');
+  const storySlides = Array.from(document.querySelectorAll('.story-slider-slide'));
+  const storyDots = Array.from(document.querySelectorAll('.story-slider-dots button'));
+  let storyCurrentSlide = 0;
+
+  function updateStorySlider(index) {
+    storyCurrentSlide = index;
+    storyTrack.style.transform = 'translateX(-' + (storyCurrentSlide * 100) + '%)';
+    storyDots.forEach((dot, i) => dot.classList.toggle('active', i === storyCurrentSlide));
+  }
+
+  storyDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => updateStorySlider(index));
+  });
+
+  setInterval(() => {
+    const next = (storyCurrentSlide + 1) % storySlides.length;
+    updateStorySlider(next);
+  }, 3000);
+</script>
+
+</body>
+</html>
