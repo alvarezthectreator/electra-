@@ -1,0 +1,3 @@
+uploads/receipts/*
+!uploads/receipts/.gitkeep
+.DS_Store
