@@ -292,8 +292,10 @@
   .quote{
     font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.08rem; line-height:1.6;
     text-align:center; color:var(--ink); margin:0 0 14px;
+    transition:opacity .35s ease, transform .35s ease;
   }
-  .quote-by{text-align:center; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:#8a8172;}
+  .quote-by{text-align:center; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:#8a8172; transition:opacity .35s ease, transform .35s ease;}
+  .quote.is-changing,.quote-by.is-changing{opacity:0; transform:translateY(6px);}
 
   /* ---------- FOOTER BOTTOM ---------- */
   .foot-bottom{background:var(--black); padding:26px 0;}
@@ -696,8 +698,8 @@
     <div class="ft-col">
       <p class="ft-title">Trusted By Connoisseurs</p>
       <div class="trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="quote">"Elys Beauty Empire captures the essence of luxury. Every product reflects quality and sophistication."</p>
-      <p class="quote-by">— James L., New York</p>
+      <p class="quote" id="testimonialQuote">"Elys Beauty Empire captures the essence of luxury. Every product reflects quality and sophistication."</p>
+      <p class="quote-by" id="testimonialAuthor">— James L., New York</p>
     </div>
   </div>
 </section>
@@ -766,6 +768,36 @@
       card.classList.toggle('is-collapsed', isExpanded);
     });
   });
+
+  const testimonials = [
+    {
+      quote: '"Elys Beauty Empire captures the essence of luxury. Every product reflects quality and sophistication."',
+      author: '— James L., New York'
+    },
+    {
+      quote: '"The quality is exceptional, from the beautiful packaging to the lasting fragrance. I will definitely order again."',
+      author: '— Amara O., Lagos'
+    },
+    {
+      quote: '"Every detail feels thoughtfully chosen. Elys Beauty Empire has become my favorite beauty destination."',
+      author: '— Sofia M., London'
+    }
+  ];
+  const testimonialQuote = document.getElementById('testimonialQuote');
+  const testimonialAuthor = document.getElementById('testimonialAuthor');
+  let testimonialIndex = 0;
+
+  setInterval(() => {
+    testimonialQuote.classList.add('is-changing');
+    testimonialAuthor.classList.add('is-changing');
+    setTimeout(() => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      testimonialQuote.textContent = testimonials[testimonialIndex].quote;
+      testimonialAuthor.textContent = testimonials[testimonialIndex].author;
+      testimonialQuote.classList.remove('is-changing');
+      testimonialAuthor.classList.remove('is-changing');
+    }, 350);
+  }, 4000);
 
   setInterval(() => {
     const next = (storyCurrentSlide + 1) % storySlides.length;
