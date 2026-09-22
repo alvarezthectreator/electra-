@@ -302,6 +302,40 @@
   .fb-item svg{width:22px;height:22px; color:var(--gold-light); flex:none;}
   .fb-item .t1{font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:600; color:#f4efe4;}
   .fb-item .t2{font-size:0.7rem; color:#a89f8c; font-weight:300;}
+  .footer-meta{
+    max-width:1240px; margin:26px auto 0; padding:22px 40px 0;
+    border-top:1px solid rgba(201,163,95,0.18);
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+  }
+  .footer-copy{
+    margin:0; color:#8f8778; font-size:0.66rem; letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .footer-links{display:flex; flex-wrap:wrap; gap:22px; justify-content:flex-end;}
+  .footer-links a{
+    color:#d8cdb0; font-size:0.66rem; letter-spacing:0.12em;
+    text-transform:uppercase; transition:color .2s ease;
+  }
+  .footer-links a:hover{color:var(--gold-light);}
+
+  /* ---------- CUSTOMER CARE ---------- */
+  .customer-care{background:var(--cream); padding:88px 0;}
+  .customer-care-intro{max-width:700px; margin:0 auto 46px; text-align:center;}
+  .customer-care-intro h2{margin:0 0 14px; font-size:2.35rem; font-weight:500;}
+  .customer-care-intro p{margin:0; color:#6b6252; font-size:0.92rem; line-height:1.7;}
+  .policy-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .policy-card{background:#fff; padding:34px 36px; border-top:2px solid var(--gold-dim);}
+  .policy-card h3{margin:0 0 24px; font-size:1.55rem; font-weight:500; color:var(--ink);}
+  .policy-card h4{margin:22px 0 7px; font-size:0.76rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; color:var(--ink);}
+  .policy-card h4:first-of-type{margin-top:0;}
+  .policy-card p,.policy-card li{color:#6b6252; font-size:0.84rem; line-height:1.7;}
+  .policy-card p{margin:0 0 10px;}
+  .policy-card ul{list-style:none; margin:0; padding:0;}
+  .policy-card li{position:relative; padding-left:16px; margin:0 0 7px;}
+  .policy-card li::before{content:"-"; position:absolute; left:0; color:var(--gold-dim);}
+  .contact-line{display:flex; flex-wrap:wrap; justify-content:center; gap:12px 28px; margin-top:28px;}
+  .contact-line a{color:var(--ink); font-size:0.8rem; letter-spacing:0.1em; font-weight:600;}
+  .contact-line a:hover{color:var(--gold-dim);}
 
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:980px){
@@ -318,6 +352,8 @@
     .fb-grid{grid-template-columns:1fr 1fr; gap:24px;}
     .wrap{padding:0 20px;}
     .hero-inner, .story-copy{padding-left:20px;padding-right:20px;}
+    .footer-meta{padding-left:20px;padding-right:20px;}
+    .policy-grid{grid-template-columns:1fr;}
   }
   @media(max-width:600px){
     .hero-title{font-size:2.4rem;}
@@ -325,6 +361,10 @@
     .notes-grid{grid-template-columns:repeat(2,1fr);}
     .fb-grid{grid-template-columns:1fr;}
     .ing-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-meta{align-items:flex-start; flex-direction:column; gap:16px;}
+    .footer-links{justify-content:flex-start; gap:12px 18px;}
+    .customer-care{padding:64px 0;}
+    .policy-card{padding:28px 22px;}
   }
 </style>
 </head>
@@ -545,6 +585,73 @@
   </div>
 </section>
 
+<!-- ============ SHIPPING & RETURNS ============ -->
+<section class="customer-care" id="shipping-returns">
+  <div class="wrap">
+    <div class="customer-care-intro">
+      <h2>Customer Care</h2>
+      <p>We are committed to getting your luxury perfumes, body spray, antiperspirant, hair products, and beauty essentials to you safely, efficiently, and in pristine condition.</p>
+      <div class="contact-line" aria-label="Business contacts">
+        <a href="tel:08065970828">08065970828</a>
+        <a href="tel:08124863873">08124863873</a>
+      </div>
+    </div>
+    <div class="policy-grid">
+      <article class="policy-card" id="shipping-policy">
+        <h3>Shipping &amp; Delivery Policy</h3>
+        <h4>1. Order Processing Time</h4>
+        <ul>
+          <li>All orders are meticulously processed within 1 to 3 business days, excluding weekends and public holidays, after receiving your order confirmation email.</li>
+          <li>You will receive another notification when your order has shipped, complete with tracking details to monitor its journey.</li>
+          <li>During peak seasons, promotional sales, or product launches, processing times may experience a slight delay. We appreciate your patience during these periods.</li>
+        </ul>
+        <h4>2. Shipping Rates &amp; Delivery Estimates</h4>
+        <p>Shipping charges for your order will be calculated and displayed at checkout. We offer multiple tiers to suit your needs:</p>
+        <ul>
+          <li><strong>Local / Standard Delivery:</strong> Typically takes 3 to 7 business days post-processing. Best for regular, cost-effective deliveries within our primary operational regions.</li>
+          <li><strong>Expedited / Express Delivery:</strong> Typically takes 1 to 3 business days post-processing. Ideal if you need your beauty essentials urgently.</li>
+          <li><strong>International Shipping:</strong> Generally takes 7 to 14 business days, depending on customs clearance and the destination country's postal infrastructure.</li>
+        </ul>
+        <p>Delivery delays can occasionally occur due to carrier backlogs, weather events, or local customs inspections, which are outside of Elys Beauty Empire's direct control.</p>
+        <h4>3. Shipment Confirmation &amp; Order Tracking</h4>
+        <p>Once your package leaves our fulfillment center, a tracking link will be sent to your email. If you do not receive a tracking update within 4 business days of placing your order, please contact our support team.</p>
+        <h4>4. Customs, Duties, and Taxes</h4>
+        <p>For international shipments, your order may be subject to import duties and taxes, including VAT, once it reaches your destination country. Elys Beauty Empire is not responsible for these charges; they are your responsibility as the customer.</p>
+        <h4>5. Damages, Lost Packages, and Issues</h4>
+        <ul>
+          <li><strong>Damaged Items:</strong> Save all packaging materials and damaged goods, then contact us within 48 hours of delivery with clear photos. We will review the case for a replacement or store credit.</li>
+          <li><strong>Lost or Stolen Packages:</strong> Once a carrier marks a package as delivered, Elys Beauty Empire is not held liable for packages confirmed delivered to the address provided at checkout. Please ensure your shipping address is secure and accurate.</li>
+        </ul>
+      </article>
+      <article class="policy-card" id="return-policy">
+        <h3>Return Policy</h3>
+        <p>At Elys Beauty Empire, we take pride in the quality of our luxury items. We want you to feel completely confident in your purchase. If you are not entirely satisfied, we are here to help.</p>
+        <h4>1. Eligibility for Returns</h4>
+        <ul>
+          <li><strong>Timeframe:</strong> Return requests must be initiated within 14 days of the delivery date.</li>
+          <li><strong>Condition:</strong> Items must be unused, unopened, and in the exact same condition that you received them, including all original packaging, seals, and tags.</li>
+          <li><strong>Proof of Purchase:</strong> A valid receipt, order confirmation number, or proof of purchase is required.</li>
+        </ul>
+        <h4>2. Non-Returnable Items</h4>
+        <ul>
+          <li>Due to the personal nature and safety regulations surrounding beauty, skincare, and hygiene products, any item that has been opened, tested, unsealed, or used cannot be returned or exchanged.</li>
+          <li>Gift cards and final-sale clearance items are strictly non-returnable.</li>
+        </ul>
+        <h4>3. Return Shipping Costs</h4>
+        <ul>
+          <li>Customers are responsible for their own return shipping costs unless the item arrived defective, damaged, or incorrect due to an error on our part.</li>
+          <li>Shipping costs are non-refundable. If you receive a refund, return shipping costs will be deducted from your refund where applicable.</li>
+        </ul>
+        <h4>4. The Return Process</h4>
+        <p>To start a return, reach out to our customer service team with your order number and reason for return. If your return is accepted, we will provide instructions on where to send your package. Items sent back without first requesting a return will not be accepted.</p>
+        <h4>5. Refunds (If Applicable)</h4>
+        <p>Once your returned item is received and inspected, we will email you to confirm receipt and notify you of the approval or rejection of your refund. If approved, your refund will be processed to your original payment method within a certain number of days, depending on your bank or payment provider.</p>
+        <p>For return requests and support, call <a href="tel:08065970828">08065970828</a> or <a href="tel:08124863873">08124863873</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER TOP: INGREDIENTS / BRAND / TRUST ============ -->
 <section class="foot-top">
   <div class="wrap foot-top-grid">
@@ -601,6 +708,15 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
       <div><div class="t1">Secure Checkout</div><div class="t2">Shop with confidence</div></div>
     </div>
+  </div>
+  <div class="footer-meta">
+    <p class="footer-copy">&copy; 2026 Aura Noir. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#collection">Collection</a>
+      <a href="#story">Our Story</a>
+      <a href="#notes">Ingredients</a>
+      <a href="#">Contact</a>
+    </nav>
   </div>
 </footer>
 
