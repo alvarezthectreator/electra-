@@ -94,6 +94,10 @@
   .nav-right{display:flex;align-items:center;gap:22px;}
   .nav-icon{width:17px;height:17px;color:#e9e2d3;cursor:pointer;transition:color .2s;}
   .nav-icon:hover{color:var(--gold-light);}
+  .orders-button{display:none;align-items:center;gap:7px;border:0;background:transparent;color:#e9e2d3;cursor:pointer;font:500 .68rem 'Jost',sans-serif;letter-spacing:.12em;text-transform:uppercase;}
+  .orders-button.is-visible{display:inline-flex;}
+  .orders-button .nav-icon{width:18px;height:18px;}
+  .orders-button:hover{color:var(--gold-light);}
   .cart-button{position:relative; border:0; background:transparent; padding:0; cursor:pointer;}
   .cart-count{position:absolute; top:-9px; right:-11px; min-width:16px; height:16px; padding:0 4px; border-radius:50%; background:var(--gold); color:var(--black); font-size:0.58rem; display:flex; align-items:center; justify-content:center;}
   .shop-now{
@@ -188,6 +192,7 @@
   .frag-name{font-size:0.82rem; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; margin:0 0 5px;}
   .frag-notes{font-size:0.76rem; color:#8a8172; margin:0 0 8px; font-weight:300;}
   .frag-price{font-size:0.86rem; font-weight:500; color:var(--ink);}
+  .frag-old-price{margin-left:7px;color:#9b9284;font-size:.72rem;text-decoration:line-through;font-weight:400;}
   .frag-arrow{
     width:30px;height:30px;border-radius:50%; border:1px solid #d8d0bd; flex:none;
     display:flex;align-items:center;justify-content:center; font-size:0.85rem; color:#6b6252;
@@ -531,6 +536,7 @@
   .product-modal-info .eyebrow{margin:0 0 18px; color:var(--gold-dim);}
   .product-modal-info h2{margin:0 0 10px; font-size:2.4rem; line-height:1.05; font-weight:500;}
   .product-modal-price{font-size:1.05rem; font-weight:600; margin:0 0 24px;}
+  .product-modal-price del{margin-left:8px;color:#9b9284;font-size:.82rem;font-weight:400;}
   .product-modal-rule{height:1px; background:#e9e4da; margin-bottom:24px;}
   .product-modal-description{color:#6b6252; font-size:0.9rem; line-height:1.75; margin:0 0 18px;}
   .product-modal-tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:auto;}
@@ -605,6 +611,22 @@
   .success-card .success-mark{width:56px; height:56px; margin:0 auto 18px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--gold); color:var(--black); font-size:1.5rem;}
   .success-card h2{margin:0 0 10px; font-size:1.6rem; font-weight:500;}
   .success-card p{margin:0 0 20px; color:#6b6252; font-size:0.84rem; line-height:1.7;}
+  .orders-modal{position:fixed;inset:0;z-index:135;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:60px 20px;background:rgba(13,12,11,.68);}
+  .orders-modal.is-open{display:flex;}
+  .orders-card{width:min(760px,100%);max-height:calc(100vh - 120px);overflow:auto;background:#fff;padding:30px;position:relative;}
+  .orders-card h2{margin:0 0 8px;font:500 2rem/1 'Cormorant Garamond',serif;}
+  .orders-card > p{margin:0 0 22px;color:#6b6252;font-size:.84rem;line-height:1.6;}
+  .orders-search{display:flex;gap:10px;margin-bottom:22px;}
+  .orders-search input{flex:1;min-width:0;padding:13px;border:1px solid #e3ddd2;font:inherit;}
+  .orders-search button{border:0;padding:0 18px;background:var(--black);color:#e6cd93;font:600 .68rem 'Jost',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;}
+  .orders-list{display:grid;gap:12px;}
+  .order-record{border:1px solid #e8e1d5;padding:16px;}
+  .order-record-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px;}
+  .order-record-code{font-size:.78rem;font-weight:700;letter-spacing:.1em;}
+  .order-record-status{padding:5px 8px;background:#f5edda;color:#795722;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  .order-record-meta{margin:0 0 10px;color:#6b6252;font-size:.78rem;}
+  .order-record-items{margin:0;padding:0;list-style:none;color:#6b6252;font-size:.76rem;line-height:1.7;}
+  .orders-empty{padding:20px 0;color:#817765;font-size:.84rem;}
 
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:980px){
@@ -646,10 +668,21 @@
     .brand-mark{width:48px; height:48px;}
     .nav-right{gap:12px; margin-left:auto; flex-shrink:0;}
     .nav-icon{display:block; width:21px; height:21px;}
+    .orders-button span{display:none;}
+    .orders-button .nav-icon{width:21px;height:21px;}
     .cart-button{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; color:#e9e2d3;}
     .shop-now{display:none;}
     .hero{min-height:620px;}
     .hero-bg{background-position:55% center;}
+    .hero-video{object-position:58% center;}
+    .fragrance-grid:not(.is-visible) .frag-card:nth-child(odd){transform:translateX(-105vw);}
+    .fragrance-grid:not(.is-visible) .frag-card:nth-child(even){transform:translateX(105vw);}
+    .fragrance-grid.is-visible .frag-card:not(.is-visible){opacity:0;}
+    .fragrance-grid.is-visible .frag-card:not(.is-visible):nth-child(odd){transform:translateX(-105vw);}
+    .fragrance-grid.is-visible .frag-card:not(.is-visible):nth-child(even){transform:translateX(105vw);}
+    .fragrance-grid .frag-card:nth-child(odd){transition-duration:.72s;}
+    .fragrance-grid .frag-card:nth-child(even){transition-duration:1.12s;}
+    .fragrance-grid.is-visible .frag-card.is-visible{opacity:1; transform:translateX(0);}
     .hero-inner{padding-top:58px; padding-bottom:48px;}
     .hero-title{font-size:2.4rem;}
     .hero-copy{font-size:0.88rem; max-width:330px;}
@@ -716,6 +749,7 @@
     <div class="nav-right">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <button class="orders-button" id="ordersButton" type="button" aria-label="View your orders"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg><span>Orders</span></button>
       <button class="cart-button" id="cartButton" type="button" aria-label="Open shopping cart"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="cart-count" id="cartCount">0</span></button>
       <button class="shop-now">Shop Now</button>
     </div>
@@ -860,6 +894,19 @@
     <p>Your order has been received. We will verify your payment and contact you with delivery updates.</p>
     <p>For support, call <a href="tel:08065970828">08065970828</a> or <a href="tel:08124863873">08124863873</a>.</p>
     <button class="checkout-button" id="closeSuccess" type="button">Continue Shopping</button>
+  </div>
+</div>
+
+<div class="orders-modal" id="ordersModal" role="dialog" aria-modal="true" aria-labelledby="ordersTitle">
+  <div class="orders-card">
+    <button class="product-modal-close" id="closeOrders" type="button" aria-label="Close orders">&times;</button>
+    <h2 id="ordersTitle">Your orders</h2>
+    <p>Enter the email used at checkout to view your order history and current delivery status.</p>
+    <form class="orders-search" id="ordersSearchForm">
+      <input id="ordersEmail" type="email" placeholder="Email used at checkout" required>
+      <button type="submit">View orders</button>
+    </form>
+    <div class="orders-list" id="ordersList"><p class="orders-empty">No orders loaded yet.</p></div>
   </div>
 </div>
 
@@ -1132,13 +1179,13 @@
   });
 
   const fallbackProducts = {
-    obsidian: {id:'obsidian', name:'25ml', short_description:'Woody · Amber · Oud', description:'A deep, refined fragrance with woody amber and oud notes. Obsidian is made for evening moments and leaves a warm, unforgettable signature.', price:3500, category:'Beauty', stock_quantity:10, image:'1.jpeg'},
-    'noir-rose': {id:'noir-rose', name:'100ml', short_description:'Rose · Patchouli · Amber', description:'A romantic statement of rose, patchouli, and amber. Noir Rose balances floral softness with a rich, confident depth.', price:5000, category:'Beauty', stock_quantity:10, image:'3.jpeg'},
-    lumiere: {id:'lumiere', name:'50ml', short_description:'Citrus · Jasmine · Musk', description:'A luminous blend of bright citrus, delicate jasmine, and soft musk. Lumiere brings a clean, elegant glow to every day.', price:2500, category:'Beauty', stock_quantity:10, image:'2.jpeg'},
-    blanche: {id:'blanche', name:'25ml', short_description:'Vanilla · Musk · Sandalwood', description:'A smooth, comforting fragrance of vanilla, musk, and sandalwood. Blanche is soft, polished, and effortlessly timeless.', price:4700, category:'Beauty', stock_quantity:10, image:'4.jpeg'},
-    fefe: {id:'fefe', name:'Velvet Oud Elixir', short_description:'Smoked oud · Amber · Vanilla', description:'A deep, enveloping fragrance built around polished oud, warm amber, and a soft veil of vanilla.', price:5300, category:'New', stock_quantity:10, image:'img/uploads/product-6deb29105dbad41b.jpg'},
-    '250ml': {id:'250ml', name:'Citrus Gold Eau de Parfum', short_description:'Bergamot · Neroli · Musk', description:'Bright bergamot and luminous neroli settle into a smooth musk finish. Citrus Gold is fresh, radiant, and made for everyday distinction.', price:4500, category:'Bestseller', stock_quantity:10, image:'img/uploads/product-a9e871f5d5ef19d0.jpg'},
-    '24ml': {id:'24ml', name:'Midnight Rose Mist', short_description:'Damask rose · Plum · Soft woods', description:'A modern rose composition with ripe plum, delicate petals, and a graceful woody base. Midnight Rose Mist is romantic without losing its edge.', price:5500, category:'Signature', stock_quantity:10, image:'img/uploads/product-ea34143482b667cf.jpg'}
+    obsidian: {id:'obsidian', name:'25ml', short_description:'Woody · Amber · Oud', description:'A deep, refined fragrance with woody amber and oud notes. Obsidian is made for evening moments and leaves a warm, unforgettable signature.', price:3500, old_price:5000, category:'Beauty', stock_quantity:10, image:'1.jpeg'},
+    'noir-rose': {id:'noir-rose', name:'100ml', short_description:'Rose · Patchouli · Amber', description:'A romantic statement of rose, patchouli, and amber. Noir Rose balances floral softness with a rich, confident depth.', price:5000, old_price:7000, category:'Beauty', stock_quantity:10, image:'3.jpeg'},
+    lumiere: {id:'lumiere', name:'50ml', short_description:'Citrus · Jasmine · Musk', description:'A luminous blend of bright citrus, delicate jasmine, and soft musk. Lumiere brings a clean, elegant glow to every day.', price:2500, old_price:4000, category:'Beauty', stock_quantity:10, image:'2.jpeg'},
+    blanche: {id:'blanche', name:'25ml', short_description:'Vanilla · Musk · Sandalwood', description:'A smooth, comforting fragrance of vanilla, musk, and sandalwood. Blanche is soft, polished, and effortlessly timeless.', price:4700, old_price:6000, category:'Beauty', stock_quantity:10, image:'4.jpeg'},
+    fefe: {id:'fefe', name:'Velvet Oud Elixir', short_description:'Smoked oud · Amber · Vanilla', description:'A deep, enveloping fragrance built around polished oud, warm amber, and a soft veil of vanilla.', price:5300, old_price:7500, category:'New', stock_quantity:10, image:'img/uploads/product-6deb29105dbad41b.jpg'},
+    '250ml': {id:'250ml', name:'Citrus Gold Eau de Parfum', short_description:'Bergamot · Neroli · Musk', description:'Bright bergamot and luminous neroli settle into a smooth musk finish. Citrus Gold is fresh, radiant, and made for everyday distinction.', price:4500, old_price:6500, category:'Bestseller', stock_quantity:10, image:'img/uploads/product-a9e871f5d5ef19d0.jpg'},
+    '24ml': {id:'24ml', name:'Midnight Rose Mist', short_description:'Damask rose · Plum · Soft woods', description:'A modern rose composition with ripe plum, delicate petals, and a graceful woody base. Midnight Rose Mist is romantic without losing its edge.', price:5500, old_price:8000, category:'Signature', stock_quantity:10, image:'img/uploads/product-ea34143482b667cf.jpg'}
   };
   let products = {};
   const featuredProductsGrid = document.getElementById('featuredProductsGrid');
@@ -1158,12 +1205,48 @@
   const checkoutPanel = document.getElementById('checkoutPanel');
   const paymentPanel = document.getElementById('paymentPanel');
   const successModal = document.getElementById('successModal');
+  const ordersButton = document.getElementById('ordersButton');
+  const ordersModal = document.getElementById('ordersModal');
+  const ordersEmail = document.getElementById('ordersEmail');
+  const ordersList = document.getElementById('ordersList');
+  let savedOrders = JSON.parse(localStorage.getItem('elys-beauty-orders') || '[]');
   let productQuantity = 1;
   let showAllFeatured = false;
   let cartToastTimer;
   let cart = JSON.parse(localStorage.getItem('elys-beauty-cart') || '[]');
   let checkoutCustomer = null;
   let orderReference = 'ELYS-ORDER';
+
+  function saveOrderReference(orderCode, email) {
+    savedOrders = [{orderCode, email}, ...savedOrders.filter((order) => order.orderCode !== orderCode)].slice(0, 20);
+    localStorage.setItem('elys-beauty-orders', JSON.stringify(savedOrders));
+    ordersButton.classList.add('is-visible');
+  }
+
+  function orderStatusLabel(order) {
+    const status = order.payment_status === 'payment_approved' && order.order_status === 'processing' ? 'Approved · Processing' : (order.order_status || order.payment_status || 'Pending payment');
+    return status.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+  }
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>'"]/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
+  }
+
+  async function loadCustomerOrders(email) {
+    ordersList.innerHTML = '<p class="orders-empty">Loading your orders...</p>';
+    try {
+      const response = await fetch('api/customer-orders.php?email=' + encodeURIComponent(email));
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Unable to load orders.');
+      if (!result.data.length) {
+        ordersList.innerHTML = '<p class="orders-empty">No orders were found for this email.</p>';
+        return;
+      }
+      ordersList.innerHTML = result.data.map((order) => '<article class="order-record"><div class="order-record-head"><strong class="order-record-code">' + escapeHtml(order.order_code) + '</strong><span class="order-record-status">' + escapeHtml(orderStatusLabel(order)) + '</span></div><p class="order-record-meta">' + escapeHtml(new Date(order.created_at).toLocaleDateString()) + ' · ' + money(order.total) + '</p><ul class="order-record-items">' + order.items.map((item) => '<li>' + escapeHtml(item.product_name) + ' · Qty ' + escapeHtml(item.quantity) + ' · ' + money(item.line_total) + '</li>').join('') + '</ul></article>').join('');
+    } catch (error) {
+      ordersList.innerHTML = '<p class="orders-empty">' + escapeHtml(error.message || 'Unable to load orders.') + '</p>';
+    }
+  }
 
   function money(value) {
     return '₦' + Number(value).toLocaleString('en-NG', {minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -1218,7 +1301,7 @@
     productModalImage.src = product.image;
     productModalImage.alt = product.name + ' perfume bottle';
     productModalTitle.textContent = product.name;
-    productModalPrice.textContent = product.price;
+    productModalPrice.innerHTML = money(product.price) + (product.old_price ? '<del>' + money(product.old_price) + '</del>' : '');
     productModalDescription.textContent = product.description;
     productModalCategory.textContent = product.category;
     productQuantity = 1;
@@ -1247,13 +1330,14 @@
           <div>
             <p class="frag-name">${product.name}</p>
             <p class="frag-notes">${product.short_description || product.category}</p>
-            <p class="frag-price">${product.stock_quantity > 0 ? money(product.price) : 'Out of stock'}</p>
+            <p class="frag-price">${product.stock_quantity > 0 ? money(product.price) + (product.old_price ? '<span class="frag-old-price">' + money(product.old_price) + '</span>' : '') : 'Out of stock'}</p>
           </div>
           <button class="frag-add" type="button" aria-label="${product.stock_quantity > 0 ? 'Add ' + product.name + ' to cart' : product.name + ' is out of stock'}" ${product.stock_quantity > 0 ? '' : 'disabled'}>${product.stock_quantity > 0 ? '+' : '—'}</button>
         </div>
       </div>`).join('');
     featuredMoreButton.hidden = featuredProducts.length <= 8 || showAllFeatured;
     bindFeaturedProductCards();
+    observeMobileProductCards();
   }
 
   featuredMoreButton.addEventListener('click', () => {
@@ -1278,6 +1362,22 @@
     });
   }
 
+  function observeMobileProductCards() {
+    const cards = document.querySelectorAll('#featuredProductsGrid .frag-card');
+    if (!window.matchMedia('(max-width:600px)').matches) {
+      cards.forEach((card) => card.classList.add('is-visible'));
+      return;
+    }
+    const revealVisibleCards = () => {
+      const triggerLine = window.innerHeight * 0.88;
+      cards.forEach((card) => {
+        if (card.getBoundingClientRect().top < triggerLine) card.classList.add('is-visible');
+      });
+    };
+    window.addEventListener('scroll', revealVisibleCards, {passive:true});
+    revealVisibleCards();
+  }
+
   async function loadFeaturedProducts() {
     try {
       const response = await fetch('api/products.php');
@@ -1286,6 +1386,7 @@
       products = Object.fromEntries(payload.data.map((product) => [product.id, {
         ...product,
         price: Number(product.price),
+        old_price: product.old_price === null ? null : Number(product.old_price),
         category: product.tag || 'Beauty',
         stock_quantity: Number(product.stock_quantity || 0),
         image: product.image
@@ -1339,6 +1440,17 @@
   document.getElementById('backToCheckout').addEventListener('click', () => { paymentPanel.classList.remove('is-open'); checkoutPanel.classList.add('is-open'); });
   document.getElementById('closePayment').addEventListener('click', () => paymentPanel.classList.remove('is-open'));
   document.getElementById('closeSuccess').addEventListener('click', () => successModal.classList.remove('is-open'));
+  ordersButton.addEventListener('click', () => {
+    ordersModal.classList.add('is-open');
+    ordersEmail.value = savedOrders[0]?.email || '';
+    if (ordersEmail.value) loadCustomerOrders(ordersEmail.value);
+  });
+  document.getElementById('closeOrders').addEventListener('click', () => ordersModal.classList.remove('is-open'));
+  document.getElementById('ordersSearchForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    loadCustomerOrders(ordersEmail.value.trim());
+  });
+  if (savedOrders.length) ordersButton.classList.add('is-visible');
 
   fetch('api/bank-account.php')
     .then((response) => response.ok ? response.json() : null)
@@ -1364,6 +1476,7 @@
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || 'Unable to create order.');
       orderReference = result.data && result.data.order_code ? result.data.order_code : 'ELYS-ORDER';
+      saveOrderReference(orderReference, checkoutCustomer.email);
     } catch (error) {
       window.alert(error.message || 'Unable to create order. Please review your cart and try again.');
       submitButton.disabled = false;

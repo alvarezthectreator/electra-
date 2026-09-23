@@ -12,7 +12,7 @@ try {
     }
 
     $storefront = trim((string) ($_GET['storefront'] ?? ''));
-    $sql = 'SELECT id, name, short_description, description, price, image, tag, stock_quantity, low_stock_threshold
+    $sql = 'SELECT id, name, short_description, description, price, old_price, image, tag, stock_quantity, low_stock_threshold
             FROM products
             WHERE is_active = 1';
     $parameters = [];
@@ -26,6 +26,7 @@ try {
     $statement->execute($parameters);
     $products = array_map(static function (array $product): array {
         $product['price'] = (float) $product['price'];
+        $product['old_price'] = $product['old_price'] === null ? null : (float) $product['old_price'];
         $product['stock_quantity'] = (int) $product['stock_quantity'];
         $product['low_stock_threshold'] = (int) $product['low_stock_threshold'];
         $product['in_stock'] = $product['stock_quantity'] > 0;
