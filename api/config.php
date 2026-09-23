@@ -117,6 +117,8 @@ function ensureSchema(PDO $pdo): void
     ensureColumn($pdo, 'products', 'low_stock_threshold', 'INT UNSIGNED NOT NULL DEFAULT 5 AFTER stock_quantity');
     ensureColumn($pdo, 'orders', 'order_status', "VARCHAR(30) NOT NULL DEFAULT 'pending_payment' AFTER payment_status");
     ensureColumn($pdo, 'orders', 'stock_deducted', 'TINYINT(1) NOT NULL DEFAULT 0 AFTER payment_method');
+    ensureColumn($pdo, 'orders', 'payment_submitted_at', 'DATETIME NULL AFTER receipt_path');
+    ensureColumn($pdo, 'orders', 'payment_approved_at', 'DATETIME NULL AFTER payment_submitted_at');
     ensureColumn($pdo, 'order_items', 'product_name', "VARCHAR(180) NOT NULL DEFAULT '' AFTER product_id");
     ensureColumn($pdo, 'order_items', 'unit_price', 'DECIMAL(12,2) NOT NULL DEFAULT 0 AFTER quantity');
     ensureColumn($pdo, 'order_items', 'line_total', 'DECIMAL(12,2) NOT NULL DEFAULT 0 AFTER unit_price');

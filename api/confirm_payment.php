@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 require __DIR__ . '/config.php';
+require_once __DIR__ . '/mailer.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     jsonResponse(['error' => 'Method not allowed'], 405);
@@ -37,4 +38,10 @@ if (!move_uploaded_file($file['tmp_name'], $destination)) {
 
 $update = $pdo->prepare("UPDATE orders SET payment_status = 'payment_pending_confirmation', order_status = 'payment_review', payment_method = ?, receipt_path = ?, payment_submitted_at = NOW() WHERE id = ?");
 $update->execute(['bank_transfer', 'uploads/receipts/' . $filename, $order['id']]);
+$details = $pdo->prepare('SELECT order_code, customer_name, customer_email, total, receipt_path FROM orders WHERE id = ?');
+$details->execute([$order['id']]);
+$submittedOrder = $details->fetch();
+if ($submittedOrder) {
+    notifyPaymentSubmitted($submittedOrder);
+}
 jsonResponse(['success' => true]);

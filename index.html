@@ -1126,6 +1126,15 @@
     });
   });
 
+  const fallbackProducts = {
+    obsidian: {id:'obsidian', name:'25ml', short_description:'Woody · Amber · Oud', description:'A deep, refined fragrance with woody amber and oud notes. Obsidian is made for evening moments and leaves a warm, unforgettable signature.', price:3500, category:'Beauty', stock_quantity:10, image:'1.jpeg'},
+    'noir-rose': {id:'noir-rose', name:'100ml', short_description:'Rose · Patchouli · Amber', description:'A romantic statement of rose, patchouli, and amber. Noir Rose balances floral softness with a rich, confident depth.', price:5000, category:'Beauty', stock_quantity:10, image:'3.jpeg'},
+    lumiere: {id:'lumiere', name:'50ml', short_description:'Citrus · Jasmine · Musk', description:'A luminous blend of bright citrus, delicate jasmine, and soft musk. Lumiere brings a clean, elegant glow to every day.', price:2500, category:'Beauty', stock_quantity:10, image:'2.jpeg'},
+    blanche: {id:'blanche', name:'25ml', short_description:'Vanilla · Musk · Sandalwood', description:'A smooth, comforting fragrance of vanilla, musk, and sandalwood. Blanche is soft, polished, and effortlessly timeless.', price:4700, category:'Beauty', stock_quantity:10, image:'4.jpeg'},
+    fefe: {id:'fefe', name:'Velvet Oud Elixir', short_description:'Smoked oud · Amber · Vanilla', description:'A deep, enveloping fragrance built around polished oud, warm amber, and a soft veil of vanilla.', price:5300, category:'New', stock_quantity:10, image:'img/uploads/product-6deb29105dbad41b.jpg'},
+    '250ml': {id:'250ml', name:'Citrus Gold Eau de Parfum', short_description:'Bergamot · Neroli · Musk', description:'Bright bergamot and luminous neroli settle into a smooth musk finish. Citrus Gold is fresh, radiant, and made for everyday distinction.', price:4500, category:'Bestseller', stock_quantity:10, image:'img/uploads/product-a9e871f5d5ef19d0.jpg'},
+    '24ml': {id:'24ml', name:'Midnight Rose Mist', short_description:'Damask rose · Plum · Soft woods', description:'A modern rose composition with ripe plum, delicate petals, and a graceful woody base. Midnight Rose Mist is romantic without losing its edge.', price:5500, category:'Signature', stock_quantity:10, image:'img/uploads/product-ea34143482b667cf.jpg'}
+  };
   let products = {};
   const featuredProductsGrid = document.getElementById('featuredProductsGrid');
   const featuredMoreButton = document.getElementById('featuredMoreButton');
@@ -1279,6 +1288,8 @@
       renderFeaturedProducts();
     } catch (error) {
       console.error('Unable to load featured products.', error);
+      products = fallbackProducts;
+      renderFeaturedProducts();
     }
   }
 
