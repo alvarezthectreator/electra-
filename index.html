@@ -110,7 +110,7 @@
     min-height:760px; display:flex; align-items:center;
   }
   .hero-bg{
-    position:absolute; inset:0;
+    position:absolute; inset:0; overflow:hidden;
     background-image: url('Perfume_bottle_on_stone_pedestal_2K_20260922115134.jpeg');
     background-size:cover;
     background-position:center center;
@@ -118,6 +118,7 @@
     filter:saturate(1) contrast(1) brightness(1);
     transform:scale(1.02);
   }
+  .hero-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center;}
   .mobile-nav{display:none;}
   .hero-inner{
     position:relative; z-index:2; max-width:1240px; margin:0 auto; padding:90px 40px 70px;
@@ -729,7 +730,11 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video class="hero-video" autoplay muted loop playsinline poster="Perfume_bottle_on_stone_pedestal_2K_20260922115134.jpeg" aria-hidden="true">
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-inner">
     <div>
       <div class="eyebrow">The Art of Attraction</div>
