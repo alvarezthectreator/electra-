@@ -35,6 +35,6 @@ if (!move_uploaded_file($file['tmp_name'], $destination)) {
     jsonResponse(['error' => 'Unable to save receipt'], 500);
 }
 
-$update = $pdo->prepare("UPDATE orders SET status = 'payment_review', payment_method = ?, receipt_path = ? WHERE id = ?");
+$update = $pdo->prepare("UPDATE orders SET payment_status = 'payment_pending_confirmation', order_status = 'payment_review', payment_method = ?, receipt_path = ?, payment_submitted_at = NOW() WHERE id = ?");
 $update->execute(['bank_transfer', 'uploads/receipts/' . $filename, $order['id']]);
 jsonResponse(['success' => true]);

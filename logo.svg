@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Elys Beauty Empire logo</title>
+  <desc id="desc">Black background with a gold crown, stylized Elys wordmark, and elegant slogan.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f3e3be"/>
+      <stop offset="20%" stop-color="#d8b77d"/>
+      <stop offset="45%" stop-color="#f2dfb3"/>
+      <stop offset="68%" stop-color="#c99c53"/>
+      <stop offset="100%" stop-color="#f7e8c4"/>
+    </linearGradient>
+    <linearGradient id="goldSoft" x1="0" x2="1">
+      <stop offset="0%" stop-color="#f9edcf"/>
+      <stop offset="50%" stop-color="#d9b067"/>
+      <stop offset="100%" stop-color="#f8e8c6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#000000" flood-opacity="0.20"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="620" fill="#050505"/>
+
+  <g transform="translate(280 0)" filter="url(#shadow)">
+    <g fill="none" stroke="url(#gold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M74 104 C 96 62, 117 36, 142 36 C 166 36, 189 62, 215 104"/>
+      <path d="M108 92 L120 42 L130 92"/>
+      <path d="M146 92 L161 42 L175 92"/>
+      <path d="M130 40 L138 18 L147 40"/>
+      <path d="M110 104 L98 72 L84 104"/>
+      <path d="M200 104 L211 72 L225 104"/>
+      <path d="M70 104 h185"/>
+      <path d="M88 104 L94 126 L104 104"/>
+      <path d="M61 116 L92 116"/>
+      <path d="M216 116 L247 116"/>
+      <path d="M95 133 L110 116 L121 133 L136 116 L149 133"/>
+      <path d="M153 133 L171 116 L187 133 L200 116 L214 133"/>
+      <path d="M69 104 L82 144 L96 104"/>
+      <path d="M225 104 L220 144 L206 104"/>
+    </g>
+
+    <g fill="url(#goldSoft)" stroke="url(#gold)" stroke-width="2.5" stroke-linejoin="round">
+      <circle cx="149" cy="160" r="12"/>
+      <circle cx="120" cy="178" r="11"/>
+      <circle cx="182" cy="178" r="11"/>
+      <circle cx="142" cy="182" r="10"/>
+      <circle cx="170" cy="184" r="9"/>
+      <circle cx="101" cy="189" r="8"/>
+      <circle cx="200" cy="190" r="8"/>
+    </g>
+  </g>
+
+  <g transform="translate(90 150)" filter="url(#shadow)">
+    <text x="0" y="220" font-size="250" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="700" fill="url(#gold)" letter-spacing="-12">Elys</text>
+
+    <g fill="url(#goldSoft)" stroke="url(#gold)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 106 232 C 125 209, 132 193, 126 177 C 120 158, 100 155, 88 171 C 79 182, 79 197, 96 210 C 108 219, 112 226, 106 232 Z"/>
+      <path d="M 132 236 C 152 211, 169 193, 170 170 C 171 148, 152 134, 136 146 C 122 157, 117 176, 126 199 C 133 214, 137 225, 132 236 Z"/>
+      <path d="M 104 196 C 115 204, 118 215, 114 226"/>
+      <path d="M 144 196 C 151 204, 158 213, 159 225"/>
+      <path d="M 83 174 C 108 170, 118 194, 116 210"/>
+      <path d="M 160 172 C 177 181, 184 196, 181 214"/>
+      <path d="M 118 144 C 127 124, 140 117, 150 126 C 160 134, 162 146, 150 154 C 138 162, 125 160, 118 144 Z"/>
+      <path d="M 118 214 C 88 236, 68 274, 84 297 C 98 319, 131 313, 142 282 C 148 266, 147 246, 118 214 Z"/>
+      <path d="M 139 224 C 165 239, 192 268, 192 298 C 192 323, 170 339, 146 331 C 121 322, 122 286, 139 224 Z"/>
+    </g>
+
+    <g fill="none" stroke="url(#gold)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 92 262 C 102 244, 112 223, 119 208"/>
+      <path d="M 120 219 C 130 230, 134 251, 128 271"/>
+      <path d="M 141 243 C 154 235, 170 237, 180 250"/>
+      <path d="M 120 317 C 109 333, 97 349, 90 365"/>
+      <path d="M 154 316 C 171 333, 182 348, 188 366"/>
+      <path d="M 97 310 C 89 320, 75 323, 63 318"/>
+      <path d="M 176 310 C 184 320, 198 322, 211 316"/>
+    </g>
+
+    <g fill="url(#goldSoft)" stroke="url(#gold)" stroke-width="2.4">
+      <path d="M 86 392 C 94 374, 108 358, 125 349 C 111 351, 98 364, 88 379 C 82 387, 82 397, 86 392 Z"/>
+      <path d="M 154 387 C 166 367, 183 352, 200 347 C 189 350, 176 364, 167 382 C 161 392, 156 398, 154 387 Z"/>
+      <path d="M 87 360 C 94 331, 117 312, 143 307 C 127 310, 111 321, 100 340 C 92 351, 87 358, 87 360 Z"/>
+      <path d="M 164 355 C 175 329, 197 314, 221 311 C 206 314, 189 327, 178 345 C 170 356, 166 362, 164 355 Z"/>
+      <path d="M 102 328 C 106 304, 121 286, 141 280 C 128 286, 117 294, 110 306 C 104 316, 101 322, 102 328 Z"/>
+      <path d="M 185 326 C 191 310, 205 296, 221 291 C 214 293, 199 304, 191 320 C 187 328, 183 332, 185 326 Z"/>
+    </g>
+  </g>
+
+  <g transform="translate(150 420)" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M30 20 H430"/>
+    <path d="M71 20 L120 0 L160 20 L210 0 L248 20 L300 0 L340 20 L390 0 L430 20"/>
+    <path d="M240 20 L240 0"/>
+  </g>
+
+  <text x="600" y="510" text-anchor="middle" font-size="56" font-family="Georgia, 'Times New Roman', serif" font-weight="500" letter-spacing="9" fill="url(#gold)" style="text-transform: uppercase;">BEAUTY EMPIRE</text>
+
+  <g transform="translate(140 520) scale(1.1)">
+    <path d="M0 18 C 20 8, 36 8, 54 18" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <path d="M 31 0 C 28 18, 22 24, 14 26 C 24 29, 30 35, 32 48 C 35 35, 41 30, 52 26 C 43 24, 37 18, 31 0 Z" fill="url(#goldSoft)" stroke="url(#gold)" stroke-width="2"/>
+    <path d="M 934 18 C 954 8, 970 8, 988 18" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <path d="M 955 0 C 952 18, 946 24, 938 26 C 948 29, 954 35, 956 48 C 959 35, 965 30, 976 26 C 967 24, 961 18, 955 0 Z" fill="url(#goldSoft)" stroke="url(#gold)" stroke-width="2"/>
+  </g>
+
+  <text x="600" y="570" text-anchor="middle" font-size="28" font-family="Georgia, 'Times New Roman', serif" font-style="italic" fill="url(#gold)" letter-spacing="1.5">Where Beauty Meets Elegance</text>
+</svg>

@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Elys Beauty Empire — Beauty, fragrance, and luxury essentials</title>
+<meta name="description" content="Discover luxury fragrances and beauty essentials from Elys Beauty Empire, with delivery across Nigeria.">
+<meta name="keywords" content="luxury perfume Nigeria, fragrances Lagos, beauty products Nigeria, Elys Beauty Empire">
+<meta name="author" content="Elys Beauty Empire">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="canonical" href="http://127.0.0.1:8080/electra/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elys Beauty Empire — Luxury fragrances in Nigeria">
+<meta property="og:description" content="Shop refined fragrances and beauty essentials delivered across Nigeria.">
+<meta property="og:url" content="http://127.0.0.1:8080/electra/index.html">
+<meta property="og:site_name" content="Elys Beauty Empire">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Elys Beauty Empire","url":"http://127.0.0.1:8080/electra/index.html","areaServed":"Nigeria","description":"Luxury fragrances and beauty essentials delivered across Nigeria."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -47,7 +59,16 @@
     max-width:1240px;margin:0 auto;padding:20px 40px;
     display:flex;align-items:center;justify-content:space-between;gap:24px;
   }
+  .brand-wrap{
+    display:inline-flex; align-items:center; gap:12px; min-width:0;
+  }
+  .brand-mark{
+    width:58px; height:58px; display:block; border-radius:50%;
+    object-fit:contain; padding:0; box-sizing:border-box;
+    background:transparent; box-shadow:none;
+  }
   .brand{
+    display:inline-flex; align-items:center;
     font-family:'Cormorant Garamond',serif; color:var(--gold-light);
     font-size:1.45rem; letter-spacing:0.22em; font-weight:600; white-space:nowrap;
   }
@@ -152,6 +173,9 @@
   .fragrance-grid{
     display:grid; grid-template-columns:repeat(4,1fr); gap:26px;
   }
+  .featured-more-wrap{display:flex;justify-content:center;margin-top:34px;}
+  .featured-more{border:1px solid var(--gold-dim);background:transparent;color:var(--ink);padding:13px 28px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .2s,color .2s;}
+  .featured-more:hover{background:var(--black);color:var(--gold-light);}
   .frag-card{background:#fff;}
   .frag-card{cursor:pointer; transition:transform .25s ease, box-shadow .25s ease;}
   .frag-card:hover{transform:translateY(-4px); box-shadow:0 18px 32px rgba(21,18,16,0.12);}
@@ -615,13 +639,16 @@
     .more-image-card img{height:300px;}
   }
   @media(max-width:600px){
-    .nav-inner{padding:16px 20px;}
-    .brand{font-size:1.05rem; letter-spacing:0.14em;}
-    .nav-right{gap:0;}
-    .nav-icon{display:none;}
-    .shop-now{padding:10px 14px; font-size:0.62rem;}
+    .nav-inner{padding:16px 20px; gap:12px;}
+    .brand-wrap{flex:1; justify-content:center;}
+    .brand{display:none;}
+    .brand-mark{width:48px; height:48px;}
+    .nav-right{gap:12px; margin-left:auto; flex-shrink:0;}
+    .nav-icon{display:block; width:21px; height:21px;}
+    .cart-button{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; color:#e9e2d3;}
+    .shop-now{display:none;}
     .hero{min-height:620px;}
-    .hero-bg{background-position:70% center;}
+    .hero-bg{background-position:55% center;}
     .hero-inner{padding-top:58px; padding-bottom:48px;}
     .hero-title{font-size:2.4rem;}
     .hero-copy{font-size:0.88rem; max-width:330px;}
@@ -629,7 +656,7 @@
     .btn-solid,.btn-outline{padding:14px 16px;}
     .section{padding:62px 0;}
     .section-head{margin-bottom:34px;}
-    .fragrance-grid{grid-template-columns:1fr;}
+    .fragrance-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
     .frag-media{aspect-ratio:1/0.95;}
     .frag-info{padding:0 2px;}
     .story-slider-slide img{height:300px;}
@@ -675,12 +702,15 @@
 <header class="nav">
   <div class="nav-inner">
     <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav"><span></span></button>
-    <div class="brand">ELYS BEAUTY EMPIRE</div>
+    <div class="brand-wrap">
+      <img class="brand-mark" src="logo.svg" alt="Elys Beauty Empire logo">
+      <div class="brand">ELYS BEAUTY EMPIRE</div>
+    </div>
     <nav class="nav-links">
       <a href="#" class="active">Home</a>
-      <a href="#collection">Collection</a>
-      <a href="#notes">Ingredients</a>
-      <a href="#">Contact</a>
+      <a href="collection.php">Collection</a>
+      <a href="#services">Services</a>
+      <a href="https://wa.me/2348065970828" target="_blank" rel="noopener">Contact</a>
     </nav>
     <div class="nav-right">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -691,9 +721,9 @@
   </div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
     <a href="#" class="active">Home</a>
-    <a href="#collection">Collection</a>
-    <a href="#notes">Ingredients</a>
-    <a href="#shipping-returns">Contact</a>
+    <a href="collection.php">Collection</a>
+    <a href="#services">Services</a>
+    <a href="https://wa.me/2348065970828" target="_blank" rel="noopener">Contact</a>
   </nav>
 </header>
 
@@ -722,65 +752,8 @@
       <h2>Featured Fragrances</h2>
       <div class="rule"></div>
     </div>
-    <div class="fragrance-grid">
-
-      <div class="frag-card" tabindex="0" role="button" data-product="obsidian">
-        <div class="frag-media" style="background:linear-gradient(160deg,#1c1a17,#050504);">
-          <img src="imgi_103_Post-8.png" alt="Obsidian perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        </div>
-        <div class="frag-info">
-          <div>
-            <p class="frag-name">Obsidian</p>
-            <p class="frag-notes">Woody · Amber · Oud</p>
-            <p class="frag-price">$195</p>
-          </div>
-          <button class="frag-add" type="button" aria-label="Add Obsidian to cart">+</button>
-        </div>
-      </div>
-
-      <div class="frag-card" tabindex="0" role="button" data-product="lumiere">
-        <div class="frag-media" style="background:linear-gradient(160deg,#f4ecd9,#e7dcc0);">
-          <img src="imgi_106_Post-2.png" alt="Lumière perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        </div>
-        <div class="frag-info">
-          <div>
-            <p class="frag-name">Lumière</p>
-            <p class="frag-notes">Citrus · Jasmine · Musk</p>
-            <p class="frag-price">$185</p>
-          </div>
-          <button class="frag-add" type="button" aria-label="Add Lumière to cart">+</button>
-        </div>
-      </div>
-
-      <div class="frag-card" tabindex="0" role="button" data-product="noir-rose">
-        <div class="frag-media" style="background:linear-gradient(160deg,#d8c9a8,#b89a63);">
-          <img src="imgi_107_Post-9-1.png" alt="Noir Rose perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        </div>
-        <div class="frag-info">
-          <div>
-            <p class="frag-name">Noir Rose</p>
-            <p class="frag-notes">Rose · Patchouli · Amber</p>
-            <p class="frag-price">$195</p>
-          </div>
-          <button class="frag-add" type="button" aria-label="Add Noir Rose to cart">+</button>
-        </div>
-      </div>
-
-      <div class="frag-card" tabindex="0" role="button" data-product="blanche">
-        <div class="frag-media" style="background:linear-gradient(160deg,#efe9dc,#d9d0bc);">
-          <img src="imgi_108_Post-16.png" alt="Blanche perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
-        </div>
-        <div class="frag-info">
-          <div>
-            <p class="frag-name">Blanche</p>
-            <p class="frag-notes">Vanilla · Musk · Sandalwood</p>
-            <p class="frag-price">$185</p>
-          </div>
-          <button class="frag-add" type="button" aria-label="Add Blanche to cart">+</button>
-        </div>
-      </div>
-
-    </div>
+    <div class="fragrance-grid" id="featuredProductsGrid"></div>
+    <div class="featured-more-wrap"><button class="featured-more" id="featuredMoreButton" type="button" hidden>Show more perfumes</button></div>
   </div>
 </section>
 
@@ -822,7 +795,7 @@
   </div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-drawer-footer">
-    <div class="cart-total"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-total"><span>Subtotal</span><span id="cartSubtotal">₦0.00</span></div>
     <button class="checkout-button" id="checkoutButton" type="button" disabled>Proceed to Checkout</button>
   </div>
 </aside>
@@ -853,7 +826,7 @@
     <aside class="checkout-summary">
       <h2>Order Summary</h2>
       <div id="checkoutItems"></div>
-      <div class="checkout-summary-total"><span>Total</span><span id="checkoutTotal">$0.00</span></div>
+      <div class="checkout-summary-total"><span>Total</span><span id="checkoutTotal">₦0.00</span></div>
     </aside>
   </div>
 </section>
@@ -871,7 +844,7 @@
       <label style="margin-top:20px;">Upload payment receipt<input id="paymentReceipt" name="receipt" type="file" accept="image/jpeg,image/png,application/pdf" required></label>
       <button class="submit-payment" type="submit">Submit Payment Receipt</button>
     </form>
-    <aside class="checkout-summary"><h2>Order Total</h2><div class="checkout-summary-total"><span>Total</span><span id="paymentTotal">$0.00</span></div></aside>
+    <aside class="checkout-summary"><h2>Order Total</h2><div class="checkout-summary-total"><span>Total</span><span id="paymentTotal">₦0.00</span></div></aside>
   </div>
 </section>
 
@@ -891,9 +864,9 @@
     <div class="story-img">
       <div class="story-slider-panel">
         <div class="story-slider-track" id="storySliderTrack">
-          <div class="story-slider-slide"><img src="imgi_229_WhatsApp-Image-2026-04-04-at-9.07.40-PM-2-1.jpg" alt="Story image 1" /></div>
-          <div class="story-slider-slide"><img src="imgi_103_Post-8.png" alt="Story image 2" /></div>
-          <div class="story-slider-slide"><img src="imgi_106_Post-2.png" alt="Story image 3" /></div>
+          <div class="story-slider-slide"><img loading="lazy" src="imgi_229_WhatsApp-Image-2026-04-04-at-9.07.40-PM-2-1.jpg" alt="Story image 1" /></div>
+          <div class="story-slider-slide"><img loading="lazy" src="imgi_103_Post-8.png" alt="Story image 2" /></div>
+          <div class="story-slider-slide"><img loading="lazy" src="imgi_106_Post-2.png" alt="Story image 3" /></div>
         </div>
         <div class="story-slider-dots" aria-label="Story image navigation">
           <button class="active" type="button" aria-label="Show story image 1"></button>
@@ -935,9 +908,9 @@
 </section>
 
 <!-- ============ THE NOTES ============ -->
-<section class="notes-strip" id="notes">
+<section class="notes-strip" id="services">
   <div class="section-head" style="margin-bottom:36px;">
-    <h2>The Notes</h2>
+    <h2>Services</h2>
     <div class="rule"></div>
   </div>
   <div class="notes-grid">
@@ -973,19 +946,19 @@
     </div>
     <div class="more-images-grid">
       <div class="more-image-card">
-        <img src="imgi_17_A_e25106a4-f8fd-4402-97aa-6ac1c7414360.jpg" alt="Luxury fragrance campaign image" />
+        <img loading="lazy" src="imgi_17_A_e25106a4-f8fd-4402-97aa-6ac1c7414360.jpg" alt="Luxury fragrance campaign image" />
         <div class="caption">Signature</div>
       </div>
       <div class="more-image-card">
-        <img src="imgi_18_K.jpg" alt="Amber perfume close up" />
+        <img loading="lazy" src="imgi_18_K.jpg" alt="Amber perfume close up" />
         <div class="caption">Amber</div>
       </div>
       <div class="more-image-card">
-        <img src="imgi_223_Khamrah-2_34a8222e-a770-40b3-9268-b5ee164ad013.png" alt="Perfume bottle campaign art" />
+        <img loading="lazy" src="imgi_223_Khamrah-2_34a8222e-a770-40b3-9268-b5ee164ad013.png" alt="Perfume bottle campaign art" />
         <div class="caption">Noir</div>
       </div>
       <div class="more-image-card">
-        <img src="imgi_31_COVER_MAIN_UP_4-5.png" alt="Hero fragrance detail shot" />
+        <img loading="lazy" src="imgi_31_COVER_MAIN_UP_4-5.png" alt="Hero fragrance detail shot" />
         <div class="caption">Luxe</div>
       </div>
     </div>
@@ -1093,7 +1066,7 @@
       <p class="ft-title">Trusted By Connoisseurs</p>
       <div class="trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <p class="quote" id="testimonialQuote">"Elys Beauty Empire captures the essence of luxury. Every product reflects quality and sophistication."</p>
-      <p class="quote-by" id="testimonialAuthor">— James L., New York</p>
+      <p class="quote-by" id="testimonialAuthor">— James O., Lagos</p>
     </div>
   </div>
 </section>
@@ -1103,7 +1076,7 @@
   <div class="wrap fb-grid">
     <div class="fb-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="7" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.8"/><circle cx="18.5" cy="19" r="1.8"/></svg>
-      <div><div class="t1">Complimentary Shipping</div><div class="t2">On all orders over $150</div></div>
+      <div><div class="t1">Complimentary Shipping</div><div class="t2">On all orders over ₦150,000</div></div>
     </div>
     <div class="fb-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 12v8a1 1 0 01-1 1H5a1 1 0 01-1-1v-8"/><rect x="2" y="7" width="20" height="5"/><path d="M12 7v14M12 7c-2 0-4-1.5-4-3.5S9 1 12 3c0-2 2-3.5 4-2S16 5 14 7"/></svg>
@@ -1121,10 +1094,11 @@
   <div class="footer-meta">
     <p class="footer-copy">&copy; 2026 Elys Beauty Empire. All rights reserved.</p>
     <nav class="footer-links" aria-label="Footer navigation">
-      <a href="#collection">Collection</a>
+      <a href="collection.php">Collection</a>
       <a href="#story">Our Story</a>
-      <a href="#notes">Ingredients</a>
-      <a href="#">Contact</a>
+      <a href="#services">Services</a>
+      <a href="https://wa.me/2348065970828" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/elysbeautyempire/" target="_blank" rel="noopener">Instagram</a>
     </nav>
   </div>
 </footer>
@@ -1152,24 +1126,9 @@
     });
   });
 
-  const products = {
-    obsidian: {
-      name: 'Obsidian', price: '$195', image: 'imgi_103_Post-8.png', category: 'Perfume',
-      description: 'A deep, refined fragrance with woody amber and oud notes. Obsidian is made for evening moments and leaves a warm, unforgettable signature.'
-    },
-    lumiere: {
-      name: 'Lumière', price: '$185', image: 'imgi_106_Post-2.png', category: 'Perfume',
-      description: 'A luminous blend of bright citrus, delicate jasmine, and soft musk. Lumière brings a clean, elegant glow to every day.'
-    },
-    'noir-rose': {
-      name: 'Noir Rose', price: '$195', image: 'imgi_107_Post-9-1.png', category: 'Perfume',
-      description: 'A romantic statement of rose, patchouli, and amber. Noir Rose balances floral softness with a rich, confident depth.'
-    },
-    blanche: {
-      name: 'Blanche', price: '$185', image: 'imgi_108_Post-16.png', category: 'Perfume',
-      description: 'A smooth, comforting fragrance of vanilla, musk, and sandalwood. Blanche is soft, polished, and effortlessly timeless.'
-    }
-  };
+  let products = {};
+  const featuredProductsGrid = document.getElementById('featuredProductsGrid');
+  const featuredMoreButton = document.getElementById('featuredMoreButton');
   const productModal = document.getElementById('productModal');
   const productModalClose = document.getElementById('productModalClose');
   const productModalImage = document.getElementById('productModalImage');
@@ -1186,13 +1145,14 @@
   const paymentPanel = document.getElementById('paymentPanel');
   const successModal = document.getElementById('successModal');
   let productQuantity = 1;
+  let showAllFeatured = false;
   let cartToastTimer;
   let cart = JSON.parse(localStorage.getItem('elys-beauty-cart') || '[]');
   let checkoutCustomer = null;
   let orderReference = 'ELYS-ORDER';
 
   function money(value) {
-    return '$' + Number(value).toFixed(2);
+    return '₦' + Number(value).toLocaleString('en-NG', {minimumFractionDigits: 2, maximumFractionDigits: 2});
   }
 
   function saveCart() {
@@ -1224,8 +1184,9 @@
   }
 
   function addToCart(product, amount) {
+    if (product.stock_quantity <= 0) return;
     const existing = cart.find((item) => item.id === product.id);
-    if (existing) existing.quantity += amount;
+    if (existing) existing.quantity = Math.min(product.stock_quantity, existing.quantity + amount);
     else cart.push({...product, quantity: amount});
     saveCart();
     renderCart();
@@ -1260,27 +1221,68 @@
     document.body.classList.remove('modal-open');
   }
 
-  document.querySelectorAll('.frag-card[data-product]').forEach((card) => {
-    card.addEventListener('click', () => openProduct(card.dataset.product));
-    card.querySelector('.frag-add').addEventListener('click', (event) => {
-      event.stopPropagation();
-      const product = products[card.dataset.product];
-      if (product) {
-        addToCart({
-          id: card.dataset.product,
-          name: product.name,
-          price: Number(product.price.replace('$', '')),
-          image: product.image
-        }, 1);
-      }
-    });
-    card.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openProduct(card.dataset.product);
-      }
-    });
+  function renderFeaturedProducts() {
+    const featuredProducts = Object.values(products);
+    const visibleProducts = showAllFeatured ? featuredProducts : featuredProducts.slice(0, 8);
+    featuredProductsGrid.innerHTML = visibleProducts.map((product) => `
+      <div class="frag-card" tabindex="0" role="button" data-product="${product.id}">
+        <div class="frag-media" style="background:linear-gradient(160deg,#efe9dc,#d9d0bc);">
+          <img loading="lazy" src="${product.image}" alt="${product.name} perfume bottle" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        </div>
+        <div class="frag-info">
+          <div>
+            <p class="frag-name">${product.name}</p>
+            <p class="frag-notes">${product.short_description || product.category}</p>
+            <p class="frag-price">${product.stock_quantity > 0 ? money(product.price) : 'Out of stock'}</p>
+          </div>
+          <button class="frag-add" type="button" aria-label="${product.stock_quantity > 0 ? 'Add ' + product.name + ' to cart' : product.name + ' is out of stock'}" ${product.stock_quantity > 0 ? '' : 'disabled'}>${product.stock_quantity > 0 ? '+' : '—'}</button>
+        </div>
+      </div>`).join('');
+    featuredMoreButton.hidden = featuredProducts.length <= 8 || showAllFeatured;
+    bindFeaturedProductCards();
+  }
+
+  featuredMoreButton.addEventListener('click', () => {
+    showAllFeatured = true;
+    renderFeaturedProducts();
   });
+
+  function bindFeaturedProductCards() {
+    document.querySelectorAll('.frag-card[data-product]').forEach((card) => {
+      card.addEventListener('click', () => openProduct(card.dataset.product));
+      card.querySelector('.frag-add').addEventListener('click', (event) => {
+        event.stopPropagation();
+        const product = products[card.dataset.product];
+        if (product) addToCart({id: product.id, name: product.name, price: product.price, image: product.image, stock_quantity: product.stock_quantity}, 1);
+      });
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openProduct(card.dataset.product);
+        }
+      });
+    });
+  }
+
+  async function loadFeaturedProducts() {
+    try {
+      const response = await fetch('api/products.php');
+      if (!response.ok) throw new Error('Product request failed');
+      const payload = await response.json();
+      products = Object.fromEntries(payload.data.map((product) => [product.id, {
+        ...product,
+        price: Number(product.price),
+        category: product.tag || 'Beauty',
+        stock_quantity: Number(product.stock_quantity || 0),
+        image: product.image
+      }]));
+      renderFeaturedProducts();
+    } catch (error) {
+      console.error('Unable to load featured products.', error);
+    }
+  }
+
+  loadFeaturedProducts();
   productModalClose.addEventListener('click', closeProduct);
   productModal.addEventListener('click', (event) => {
     if (event.target === productModal) closeProduct();
@@ -1298,7 +1300,7 @@
   });
   addCartButton.addEventListener('click', () => {
     const product = products[productModalTitle.textContent.toLowerCase().replace('è', 'e').replace(' ', '-')];
-    if (product) addToCart({id: productModalTitle.textContent, name: product.name, price: Number(product.price.replace('$', '')), image: product.image}, productQuantity);
+    if (product) addToCart({id: product.id, name: product.name, price: Number(product.price.replace(/[^0-9.-]/g, '')), image: product.image, stock_quantity: product.stock_quantity}, productQuantity);
   });
 
   document.getElementById('cartButton').addEventListener('click', () => { renderCart(); cartDrawer.classList.add('is-open'); cartBackdrop.classList.add('is-open'); });
@@ -1347,7 +1349,10 @@
       if (!response.ok) throw new Error(result.error || 'Unable to create order.');
       orderReference = result.data && result.data.order_code ? result.data.order_code : 'ELYS-ORDER';
     } catch (error) {
-      orderReference = 'ELYS-' + Date.now();
+      window.alert(error.message || 'Unable to create order. Please review your cart and try again.');
+      submitButton.disabled = false;
+      submitButton.textContent = 'Continue to Payment';
+      return;
     }
     document.getElementById('transferReference').textContent = orderReference;
     checkoutPanel.classList.remove('is-open');
@@ -1439,7 +1444,7 @@
   const testimonials = [
     {
       quote: '"Elys Beauty Empire captures the essence of luxury. Every product reflects quality and sophistication."',
-      author: '— James L., New York'
+      author: '— James O., Lagos'
     },
     {
       quote: '"The quality is exceptional, from the beautiful packaging to the lasting fragrance. I will definitely order again."',
@@ -1447,7 +1452,7 @@
     },
     {
       quote: '"Every detail feels thoughtfully chosen. Elys Beauty Empire has become my favorite beauty destination."',
-      author: '— Sofia M., London'
+      author: '— Sofia A., Abuja'
     }
   ];
   const testimonialQuote = document.getElementById('testimonialQuote');
