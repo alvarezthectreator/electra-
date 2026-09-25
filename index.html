@@ -36,12 +36,19 @@
     box-sizing:border-box;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth; scroll-padding-top: env(safe-area-inset-top, 0px);}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:env(safe-area-inset-top, 0px);
+    overflow-x:hidden;
+    overflow-x:clip;
+  }
   body{
     margin:0; background:var(--cream); color:var(--ink);
     font-family:'Jost', sans-serif; font-weight:400;
     -webkit-font-smoothing:antialiased;
+    width:100%; min-width:0;
     overflow-x:hidden;
+    overflow-x:clip;
   }
   h1,h2,h3,.serif{font-family:'Cormorant Garamond', serif;}
   img,svg{max-width:100%;display:block;}
@@ -189,6 +196,7 @@
     display:flex;align-items:center;justify-content:center;
   }
   .frag-info{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+  .frag-info > div:first-child{min-width:0;}
   .frag-name{font-size:0.82rem; letter-spacing:0.12em; font-weight:600; text-transform:uppercase; margin:0 0 5px;}
   .frag-notes{font-size:0.76rem; color:#8a8172; margin:0 0 8px; font-weight:300;}
   .frag-price{font-size:0.86rem; font-weight:500; color:var(--ink);}
@@ -643,7 +651,7 @@
     .hero-inner .eyebrow, .hero-copy{margin-left:auto; margin-right:auto;}
     .hero-ctas{justify-content:center;}
     .bottle-stage{display:none;}
-    .fragrance-grid{grid-template-columns:repeat(2,1fr);}
+    .fragrance-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .story-grid{grid-template-columns:1fr;}
     .story-copy{padding-top:58px; padding-bottom:58px;}
     .story-features{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:34px 20px;}
@@ -690,7 +698,7 @@
     .btn-solid,.btn-outline{padding:14px 16px;}
     .section{padding:62px 0;}
     .section-head{margin-bottom:34px;}
-    .fragrance-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .fragrance-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
     .frag-media{aspect-ratio:1/0.95;}
     .frag-info{padding:0 2px;}
     .story-slider-slide img{height:300px;}
