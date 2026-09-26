@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the Elys Beauty Empire salon menu, including hair, nail, lash and wig services.">
+  <title>Salon Menu | Elys Beauty Empire</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#151210;--black:#0d0c0b;--cream:#f6f1e8;--gold:#c9a35f;--gold-light:#e3c88a;--muted:#746c60;--line:#e4dccd}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:'Jost',sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .site-header{background:var(--black);border-bottom:1px solid rgba(201,163,95,.25)}
+    .nav{max-width:1200px;min-height:88px;margin:auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;color:var(--gold-light);font:600 1.25rem 'Cormorant Garamond',serif;letter-spacing:.18em}
+    .brand img{width:52px;height:52px;object-fit:contain}
+    .nav-links{display:flex;align-items:center;gap:30px;color:#e9e2d3;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+    .nav-links a:hover{color:var(--gold-light)}
+    .nav-links .cart-link{display:inline-flex;align-items:center;gap:8px;padding:10px 13px;border:1px solid rgba(227,200,138,.5);color:var(--gold-light)}
+    .cart-link-count{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:99px;background:var(--gold);color:var(--black);font-size:.62rem;letter-spacing:0}
+    main{max-width:1200px;margin:auto;padding:70px 32px 100px}
+    .intro{text-align:center;max-width:700px;margin:0 auto 40px}
+    .eyebrow{margin:0 0 12px;color:#927341;font-size:.68rem;font-weight:600;letter-spacing:.23em;text-transform:uppercase}
+    h1{margin:0 0 12px;font:500 clamp(2.8rem,6vw,4.4rem)/.98 'Cormorant Garamond',serif}
+    .intro-copy{margin:0;color:var(--muted);font-size:.95rem;line-height:1.7}
+    .filters{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:0 auto 22px}
+    .filter{border:1px solid #d8cdb7;background:transparent;padding:10px 18px;color:#4f493f;font:500 .67rem 'Jost',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+    .filter:hover,.filter[aria-pressed="true"]{background:var(--black);border-color:var(--black);color:var(--gold-light)}
+    .pricing-note{max-width:850px;margin:0 auto 32px;padding:14px 18px;border-left:2px solid var(--gold);background:#efe8db;color:#6e6558;font-size:.79rem;line-height:1.65}
+    .service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .service-card{position:relative;display:flex;flex-direction:column;min-height:240px;padding:26px 27px 22px;background:linear-gradient(145deg,#fff 0%,#fff 72%,#faf6ed 100%);border:1px solid rgba(21,18,16,.07);box-shadow:0 5px 16px rgba(21,18,16,.025);transition:transform .2s,box-shadow .2s,border-color .2s}
+    .service-card[hidden]{display:none}
+    .service-card:hover{transform:translateY(-3px);border-color:rgba(201,163,95,.48);box-shadow:0 14px 30px rgba(21,18,16,.09)}
+    .service-category{margin:0 0 10px;color:#947343;font-size:.64rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+    .service-card h2{margin:0 0 8px;font:500 1.8rem/1.1 'Cormorant Garamond',serif}
+    .service-description{margin:0;color:var(--muted);font-size:.83rem;line-height:1.65}
+    .service-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:auto;padding-top:22px;border-top:1px solid #eee8dc}
+    .service-price{display:grid;gap:2px;color:#443a29;font-size:.84rem;font-weight:600}
+    .service-price small{color:#8c8376;font-size:.61rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase}
+    .service-actions{display:flex;align-items:center;gap:16px}
+    .service-details{color:#745a2d;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+    .service-details:hover{color:#17130c}
+    .service-add{display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:50%;background:var(--black);color:var(--gold-light);font:300 1.8rem/1 'Jost',sans-serif;cursor:pointer;box-shadow:0 5px 12px rgba(13,12,11,.14);transition:transform .2s,background .2s,color .2s}
+    .service-add:hover{transform:rotate(90deg) scale(1.06);background:var(--gold);color:var(--black)}
+    .service-add:focus-visible,.filter:focus-visible,.service-details:focus-visible,.nav a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+    .cart-toast{position:fixed;right:24px;bottom:24px;z-index:5;padding:14px 18px;background:var(--black);color:var(--gold-light);font-size:.77rem;box-shadow:0 12px 28px rgba(0,0,0,.18);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .2s,transform .2s}
+    .cart-toast.is-visible{opacity:1;transform:translateY(0)}
+    .empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--muted)}
+    .back-link{display:inline-block;margin-top:38px;color:#735b32;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+    @media(max-width:640px){.nav{padding:12px 18px;min-height:70px}.brand{font-size:1rem;letter-spacing:.11em}.brand img{width:44px;height:44px}.nav-links{gap:14px;font-size:.6rem}.nav-links .cart-link{padding:8px}.nav-links a:nth-child(2){display:none}main{padding:50px 18px 70px}.intro{margin-bottom:30px}.service-grid{grid-template-columns:1fr;gap:12px}.service-card{min-height:215px;padding:22px}.service-card h2{font-size:1.65rem}.service-actions{gap:11px}.cart-toast{right:14px;bottom:14px;left:14px;text-align:center}}
+    @media(max-width:390px){.nav{align-items:flex-start;flex-direction:column;gap:8px}.nav-links{padding-left:4px}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="Elys Beauty Empire home"><img src="logo.svg" alt=""><span>ELYS BEAUTY EMPIRE</span></a>
+      <nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="collection.php">Collection</a><a href="services.html" aria-current="page">Services</a><a class="cart-link" href="index.html?openCart=1" aria-label="View shopping cart">Cart <span class="cart-link-count" id="serviceCartCount">0</span></a></nav>
+    </div>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Elys Beauty Empire</p>
+      <h1 id="page-title">Salon Menu</h1>
+      <p class="intro-copy">Move through the menu by ritual. Every service is listed with an illustrative starting price in ₦.</p>
+    </section>
+    <nav class="filters" aria-label="Filter salon services">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">All services</button>
+      <button class="filter" type="button" data-filter="Hair" aria-pressed="false">Hair</button>
+      <button class="filter" type="button" data-filter="Nails" aria-pressed="false">Nails</button>
+      <button class="filter" type="button" data-filter="Eyes" aria-pressed="false">Eyes</button>
+      <button class="filter" type="button" data-filter="Wigs" aria-pressed="false">Wigs</button>
+    </nav>
+    <p class="pricing-note"><strong>Sample pricing:</strong> prices are illustrative and pending final confirmation. Hair pricing may vary by length, density, hair type and requested finish.</p>
+    <section class="service-grid" id="serviceGrid" aria-label="Salon services">
+      <article class="service-card" data-category="Hair"><p class="service-category">Hair</p><h2>Dreadlocks &amp; Maintenance</h2><p class="service-description">Loc retwist, grooming and care shaped around your texture and style.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦25,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/dreadlocks-maintenance">Details</a><button class="service-add" type="button" data-service-id="dreadlocks-maintenance" data-service-name="Dreadlocks &amp; Maintenance" data-service-price="25000" aria-label="Add Dreadlocks and Maintenance to cart">+</button></div></div></article>
+      <article class="service-card" data-category="Hair"><p class="service-category">Hair</p><h2>Ghana Weaving &amp; Braids</h2><p class="service-description">Clean parting, considered patterns and a finish built to last.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦18,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/ghana-weaving-braids">Details</a><button class="service-add" type="button" data-service-id="ghana-weaving-braids" data-service-name="Ghana Weaving &amp; Braids" data-service-price="18000" aria-label="Add Ghana Weaving and Braids to cart">+</button></div></div></article>
+      <article class="service-card" data-category="Hair"><p class="service-category">Hair</p><h2>Bobbing &amp; Haircuts</h2><p class="service-description">Polished cuts and shape work for women, men and children.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦8,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/bobbing-haircuts">Details</a><button class="service-add" type="button" data-service-id="bobbing-haircuts" data-service-name="Bobbing &amp; Haircuts" data-service-price="8000" aria-label="Add Bobbing and Haircuts to cart">+</button></div></div></article>
+      <article class="service-card" data-category="Nails"><p class="service-category">Nails</p><h2>Manicure &amp; Pedicure</h2><p class="service-description">A precise, unhurried reset for hands and feet.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦12,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/manicure-pedicure">Details</a><button class="service-add" type="button" data-service-id="manicure-pedicure" data-service-name="Manicure &amp; Pedicure" data-service-price="12000" aria-label="Add Manicure and Pedicure to cart">+</button></div></div></article>
+      <article class="service-card" data-category="Nails"><p class="service-category">Nails</p><h2>Acrylics</h2><p class="service-description">Structured length with a clean, glossy ELY finish.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦20,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/acrylics">Details</a><button class="service-add" type="button" data-service-id="acrylics" data-service-name="Acrylics" data-service-price="20000" aria-label="Add Acrylics to cart">+</button></div></div></article>
+      <article class="service-card" data-category="Eyes"><p class="service-category">Eyes</p><h2>Lash Application &amp; Extensions</h2><p class="service-description">Soft definition or full drama, tailored to your eye shape.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦15,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/lash-application-extensions">Details</a><button class="service-add" type="button" data-service-id="lash-application-extensions" data-service-name="Lash Application &amp; Extensions" data-service-price="15000" aria-label="Add Lash Application and Extensions to cart">+</button></div></div></article>
+      <article class="service-card" data-category="Wigs"><p class="service-category">Wigs</p><h2>Wig Washing &amp; Maintenance</h2><p class="service-description">Wash, revive, detangle and return your wig to its best form.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦12,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/wig-washing-maintenance">Details</a><button class="service-add" type="button" data-service-id="wig-washing-maintenance" data-service-name="Wig Washing &amp; Maintenance" data-service-price="12000" aria-label="Add Wig Washing and Maintenance to cart">+</button></div></div></article>
+      <article class="service-card" data-category="Wigs"><p class="service-category">Wigs</p><h2>Wig Styling</h2><p class="service-description">A fresh cut, curl, press or restyle for your next entrance.</p><div class="service-bottom"><span class="service-price"><small>Starting at</small>₦15,000</span><div class="service-actions"><a class="service-details" href="https://elys-beauty-empire-website--essmechinary.replit.app/services/wig-styling">Details</a><button class="service-add" type="button" data-service-id="wig-styling" data-service-name="Wig Styling" data-service-price="15000" aria-label="Add Wig Styling to cart">+</button></div></div></article>
+    </section>
+    <a class="back-link" href="index.html#collection">← Back to featured fragrances</a>
+  </main>
+  <div class="cart-toast" id="serviceCartToast" role="status" aria-live="polite">Added to cart</div>
+  <script>
+    const filterButtons = document.querySelectorAll('.filter');
+    const serviceCards = document.querySelectorAll('.service-card');
+    filterButtons.forEach((button) => button.addEventListener('click', () => {
+      const category = button.dataset.filter;
+      filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      serviceCards.forEach((card) => { card.hidden = category !== 'all' && card.dataset.category !== category; });
+    }));
+
+    const cartStorageKey = 'elys-beauty-cart';
+    const serviceCartCount = document.getElementById('serviceCartCount');
+    const serviceCartToast = document.getElementById('serviceCartToast');
+    let serviceToastTimer;
+    function readCart() {
+      try { return JSON.parse(localStorage.getItem(cartStorageKey) || '[]'); }
+      catch (error) { return []; }
+    }
+    function updateServiceCartCount() {
+      const count = readCart().reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+      serviceCartCount.textContent = String(count);
+    }
+    document.querySelectorAll('.service-add').forEach((button) => button.addEventListener('click', () => {
+      const slug = button.dataset.serviceId;
+      const id = 'service-' + slug;
+      const cart = readCart();
+      const existing = cart.find((item) => item.id === id);
+      if (existing) existing.quantity = Math.min(20, Number(existing.quantity || 1) + 1);
+      else cart.push({
+        id,
+        service_id: slug,
+        item_type: 'service',
+        name: button.dataset.serviceName,
+        price: Number(button.dataset.servicePrice),
+        image: 'logo.svg',
+        stock_quantity: 20,
+        quantity: 1
+      });
+      localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+      updateServiceCartCount();
+      serviceCartToast.textContent = button.dataset.serviceName + ' added to cart';
+      serviceCartToast.classList.add('is-visible');
+      window.clearTimeout(serviceToastTimer);
+      serviceToastTimer = window.setTimeout(() => serviceCartToast.classList.remove('is-visible'), 2200);
+    }));
+    updateServiceCartCount();
+  </script>
+</body>
+</html>
